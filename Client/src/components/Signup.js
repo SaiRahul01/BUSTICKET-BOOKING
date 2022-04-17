@@ -132,14 +132,14 @@ export default function Signup() {
         /> */}
 
 
-            <div className="page-wrapper bg-gra-01 p-t-30 p-b-80 font-poppins"   >
+            <div className="page-wrapper bg-gra-01 p-t-30 p-b-80 font-poppins"    >
 
                 <div></div>
 
-                <div className="wrapper  wrapper--w960 " style={{ marginLeft: '240px' }} >
-                    <br />
-                    <br />
-                    <br />
+                <div className="wrapper  wrapper--w960 " style={{ marginLeft: '240px',border:'2px solid  white',borderRadius:'5px',padding:'30px' }} >
+            
+                  
+           
                     <h2 className="title text-center">Registration </h2>
 
                     <form method="POST"  >
@@ -267,8 +267,8 @@ export default function Signup() {
                         </div>
 
 
-                        <div className="p-t-10 text-center">
-                            <button className="btn-ded btn--pill btn--green" onClick={handleregister} type="submit">SUBMIT</button>
+                        <div className="text-center">
+                            <button className='button-41' style={{boxShadow:'none',width:'150px'}}  onClick={handleregister} type="submit">SUBMIT</button>
                         </div>
                     </form>
 
@@ -279,3 +279,7 @@ export default function Signup() {
         </>
     )
 }
+
+
+
+/* CSS */
