@@ -84,10 +84,10 @@ export default function Signup() {
         }).then(
             (response) => {
                 if (response.data.op) {
-                    toast("User Already Exists !! ")
+                    alert("User Already Exists !! ")
                 }
                 else {
-                    toast("Registered Successfully!")
+                    alert("Registered Successfully!")
                 }
                 // console.log(response.data);
 
@@ -140,7 +140,7 @@ export default function Signup() {
             
                   
            
-                    <h2 className="title text-center">Registration </h2>
+                    <h1 className="title text-center">Registration </h1>
 
                     <form method="POST"  >
                         <div className="fc">
