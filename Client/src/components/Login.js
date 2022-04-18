@@ -3,7 +3,16 @@ import Axios from 'axios'
 // import bgg from  './mainbggg.jpg'
 import imgg from './loginbg.jpg'
 import './login.css'
+import { useEffect } from 'react'
+
+
+
 export default function Login() {
+
+ 
+
+
+  Axios.defaults.withCredentials=true
 
   const [emaillogin, setemaillogin] = useState("")
   const [passwordlogin, setpasswordlogin] = useState("")
@@ -23,7 +32,11 @@ export default function Login() {
         
         alert("Unsuccessful")
       } else {
+
+       
         setLoginStatus(response.data[0].emaillogin)
+       
+        
         alert("Successful")
         e.preventDefault();
       }
@@ -34,6 +47,15 @@ export default function Login() {
 
 
   }
+  // useEffect(()=>{
+  //   Axios.get("http://localhost:3001/loginchk").then((result)=>{
+  //     if(result)
+  //     {
+  //       alert(result.user)
+  //     }
+  //     console.log(result);
+  //   })
+  // },[])
 
   return (
 

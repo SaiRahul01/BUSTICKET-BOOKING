@@ -14,16 +14,35 @@ import {
 import Signup from './components/Signup';
 import Login from './components/Login';
 import About from './components/About';
+import { useState } from 'react';
 
 
 import { toast, ToastContainer } from 'react-toastify';
+import  Axios  from 'axios';
+import Userprofile from './components/User/Userprofile';
+import Bookticket from './components/User/Bookticket';
+import Bookings from './components/User/Bookings';
 // import 'react-toastify/dist/ReactToastify.css';
 
 
 
 // toast.configure();
 function App() {
+  // const [isauth, setauth] = useState(false)
+  // const [authemail, setauthemail] = useState('')
+
+  // const setlogin=()=>{
+  //   setauth(true)
+  // }
+  // const setlogout=()=>{
+  //   setauth(false)
+  //   setauthemail('')
+  // }
+  // const setauthmail=(email)=>{
+  //   setauthemail(email)
+  // }
   
+  Axios.defaults.withCredentials=true
 
 
 
@@ -49,7 +68,7 @@ function App() {
           
           </Route>
 
-          <Route exact path="/login" element={<Login/>}>
+          <Route  exact path="/login"  element={<Login />}>
             
           </Route>
           <Route exact path="/admin/profile" element={<Aprofile />}>
@@ -69,6 +88,16 @@ function App() {
           <Route exact path="/admin/viewusers" element={<Viewusers />}>
 
           </Route>
+          <Route exact path="/user/profile" element={<Userprofile />}>
+
+        </Route>
+
+        <Route exact path="/user/bookticket" element={<Bookticket />}>
+
+        </Route>
+        <Route exact path="/user/bookings" element={<Bookings />}>
+
+        </Route>
 
 
       </Routes>
