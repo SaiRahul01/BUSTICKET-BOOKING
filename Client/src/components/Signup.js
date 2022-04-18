@@ -118,14 +118,25 @@ export default function Signup() {
     return (
 
         <>
-            
+            {/* <ToastContainer
+        position="top-right"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        closeButton={false}
+        /> */}
 
 
-            <div className="  p-t-30 p-b-80  "    >
+            <div className="page-wrapper bg-gra-01 p-t-30 p-b-80 font-poppins"    >
 
                 <div></div>
 
-                <div className="  wrapper--w960 " style={{ marginLeft: '240px',border:'2px solid  white',borderRadius:'5px',padding:'30px' }} >
+                <div className="wrapper  wrapper--w960 " style={{ marginLeft: '240px',border:'2px solid  white',borderRadius:'5px',padding:'30px' }} >
             
                   
            
