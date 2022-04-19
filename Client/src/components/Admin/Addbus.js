@@ -14,6 +14,11 @@ export default function Addbus() {
 	const [reachtime, setreachtime] = useState('')
 
 	const handleaddbus = (e) => {
+		if(busname==='' || fromstation==='' ||tostation==='' || capacity==='' || driver==='' || starttime==='' ||  reachtime==='' )
+		{
+			alert('Please Fill all fields')
+			return
+		}
 		Axios.post('http://localhost:3001/addbus', {
 			busname: busname,
 			driver: driver,

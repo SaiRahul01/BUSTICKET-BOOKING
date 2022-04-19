@@ -18,6 +18,11 @@ export default function Editbus() {
     const handlesave=(e)=>{
         // alert(key)
         // alert('Name'+newbusname+"\n From:"+newfromstation+"\nTo: "+newtostation+"\n Capacity: "+newcapacity)
+        if(newbusname==='' || newfromstation==='' ||newtostation==='' || newcapacity==='' ||newbusdriver==='' || starttime==='' ||  reachtime==='' )
+		{
+			alert('Please Fill all fields')
+			return
+		}
     
         Axios.post('http://localhost:3001/admin/updatebus',{
           id:parseInt(id),
