@@ -143,7 +143,9 @@ app.post('/addbus', (req, res) => {
     const tostation = req.body.tostation
     const capacity = req.body.capacity
     const driver = req.body.driver
-    db.query("INSERT INTO bus(busname,capacity,fromcity,tocity,busdriver) VALUES(?,?,?,?,?)", [busname, capacity, fromstation, tostation, driver], (err, result) => {
+    const starttime=req.body.starttime
+    const reachtime=req.body.reachtime
+    db.query("INSERT INTO bus(busname,capacity,fromcity,tocity,busdriver,starttime,reachtime) VALUES(?,?,?,?,?,?,?)", [busname, capacity, fromstation, tostation, driver,starttime,reachtime], (err, result) => {
         if (err) {
             console.log(err);
             res.send({ op: 'fail' })

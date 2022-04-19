@@ -44,15 +44,19 @@ export default function Viewbuses() {
     {/* { getbuses()} */}
     <br /><br /><br /><br />
     
-      <table style={{border:'1px solid white',marginLeft:'15%',marginRight:'50%',width:'1000px'}}>
+      <table style={{border:'1px solid white',marginLeft:'10%',marginRight:'50%',width:'1200px'}}>
         <tbody>
           <tr>
             <th className='text-center' style={{color:'gold',fontSize:'20px'}}>Bus Id</th>
             <th className='text-center' style={{color:'gold',fontSize:'20px'}}>Bus Name</th>
             <th className='text-center' style={{color:'gold',fontSize:'20px'}}>Bus Driver</th>
             <th className='text-center' style={{color:'gold',fontSize:'20px'}}>From City</th>
+            <th className='text-center' style={{color:'gold',fontSize:'20px'}}>Start Time</th>
             <th className='text-center' style={{color:'gold',fontSize:'20px'}}>To City</th>
+            <th className='text-center' style={{color:'gold',fontSize:'20px'}}>Reach Time</th>
             <th className='text-center' style={{color:'gold',fontSize:'20px'}}>Capacity</th>
+            
+        
             <th className='text-center' style={{color:'gold',fontSize:'20px',width:'50px'}}>Action</th>
           </tr>
           
@@ -63,7 +67,10 @@ export default function Viewbuses() {
               <td className='text-center' style={{color:'white',marginRight:'20px',fontSize:'25px',width:'200px'}}>{val.busname}</td>
               <td className='text-center' style={{color:'white',marginRight:'20px',fontSize:'25px',width:'200px'}}>{val.busdriver}</td>
               <td className='text-center' style={{color:'white',marginRight:'20px',fontSize:'25px',width:'200px'}}>{val.fromcity}</td>
+              <td className='text-center' style={{color:'white',marginRight:'20px',fontSize:'25px',width:'200px'}}>{val.starttime}</td>
+            
               <td className='text-center' style={{color:'white',marginRight:'20px',fontSize:'25px',width:'200px'}}>{val.tocity}</td>
+              <td className='text-center' style={{color:'white',marginRight:'20px',fontSize:'25px',width:'200px'}}>{val.reachtime}</td>
               <td className='text-center' style={{color:'white',marginRight:'20px',fontSize:'25px',width:'200px'}}>{val.capacity}</td>
               <td className='text-center' style={{color:'white',marginRight:'20px',fontSize:'25px',width:'200px'}}>
                 <div className='parent' style={{}}>
@@ -82,10 +89,12 @@ export default function Viewbuses() {
               </td>
 
               </tr>
+              
        
             })
             //onclick={deletebus(val.busid)}
           }
+          <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
         </tbody>
       </table>
