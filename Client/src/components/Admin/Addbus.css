@@ -3536,6 +3536,8 @@ textarea.input100 {
 }
 
 
-
+.fc{
+	column-count: 2;
+}
 
 

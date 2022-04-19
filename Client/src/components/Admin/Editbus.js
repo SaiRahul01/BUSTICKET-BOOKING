@@ -52,7 +52,7 @@ export default function Editbus() {
 				<span class="contact100-form-title">
 					Edit Bus {id}
 				</span>
-
+ <div className="fc">
 				<div class="wrap-input100 validate-input" data-validate="Name is required">
 					
 					<input class="input100" type="text"  name="name" onChange={e=>setnewbusname(e.target.value)} placeholder="New Bus Name" required/>
@@ -64,7 +64,8 @@ export default function Editbus() {
 					<input class="input100" type="text"  name="name" onChange={e=>setnewbusdriver(e.target.value)} placeholder="New Bus Driver" required/>
 					<span class="focus-input100"></span>
 				</div>
-
+        </div>
+        <div className="fc">
 				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 					
 					<input class="input100" type="text" name="email" onChange={e=>setnewfromstation(e.target.value)}   placeholder="From Bus Stop" required/>
@@ -75,7 +76,8 @@ export default function Editbus() {
 					<input class="input100" type="time" name="email" onChange={e=>setstarttime(e.target.value)}   placeholder="Start Time" required/>
 					<span class="focus-input100"></span>
 				</div>
-
+</div>
+<div className="fc">
         <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 					
 					<input class="input100" type="text" name="email" onChange={e=>setnewtostation(e.target.value)}   placeholder="To Bus Stop" required/>
@@ -86,7 +88,7 @@ export default function Editbus() {
 					<input class="input100" type="time" name="email" onChange={e=>setreachtime(e.target.value)}   placeholder="Reach Time" required/>
 					<span class="focus-input100"></span>
 				</div>
-
+        </div>
         <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 					
 					<input class="input100" type="number" name="email" onChange={e=>setnewcapacity(e.target.value)}  placeholder="New Capacity" required/>

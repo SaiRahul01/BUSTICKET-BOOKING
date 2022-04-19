@@ -47,7 +47,7 @@ export default function Addbus() {
 						<span class="contact100-form-title">
 							Add a Bus
 						</span>
-
+<div className="fc">
 						<div class="wrap-input100 validate-input" data-validate="Name is required">
 
 							<input class="input100" type="text" onChange={e => setbusname(e.target.value)} name="name" placeholder="Bus Name" required />
@@ -58,7 +58,8 @@ export default function Addbus() {
 							<input class="input100" type="text" onChange={e => setdriver(e.target.value)} name="name" placeholder="Bus Driver" required />
 							<span class="focus-input100"></span>
 						</div>
-
+</div>
+<div className="fc">
 						<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
 
 							<input class="input100" type="text" name="email" onChange={e => setfromstation(e.target.value)} placeholder="From Bus Stop" required />
@@ -69,7 +70,8 @@ export default function Addbus() {
 							<input class="input100" type="time" name="email" onChange={e => setstarttime(e.target.value)} placeholder="Start Time" required />
 							<span class="focus-input100"></span>
 						</div>
-
+						</div>
+						<div className="fc">
 						<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
 
 							<input class="input100" type="text" name="email" onChange={e => settostation(e.target.value)} placeholder="To Bus Stop" required />
@@ -80,7 +82,7 @@ export default function Addbus() {
 							<input class="input100" type="time" name="email" onChange={e => setreachtime(e.target.value)} placeholder="Reach Time" required />
 							<span class="focus-input100"></span>
 						</div>
-
+</div>
 						<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
 
 							<input class="input100" type="number" name="email" onChange={e => setcapacity(e.target.value)} placeholder="Capacity" required />
