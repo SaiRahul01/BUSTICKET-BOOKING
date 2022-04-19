@@ -42,7 +42,7 @@ export default function Viewbuses() {
 
 
     {/* { getbuses()} */}
-    <br /><br /><br /><br />
+    <br /><br />
     
       <table style={{border:'1px solid white',marginLeft:'10%',marginRight:'50%',width:'1200px'}}>
         <tbody>
@@ -94,7 +94,7 @@ export default function Viewbuses() {
             })
             //onclick={deletebus(val.busid)}
           }
-          <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+          
 
         </tbody>
       </table>
