@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-
+import Cookies from 'js-cookie'
 
 
 export default function Userprofile() {
@@ -19,7 +19,7 @@ export default function Userprofile() {
         <tbody>
         <tr className='text-center'>
         <td style={{width: "404px",height:'50px',fontSize:'20px'}}>Name</td>
-        <td style={{width: "404px",height:'50px'}}>Sai Rahul</td>
+        <td style={{width: "404px",height:'50px'}}>{Cookies.get("user")}</td>
         </tr>
         <tr className='text-center'>
         <td style={{width: "354px",height:'50px'}}>Email</td>

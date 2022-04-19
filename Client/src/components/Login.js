@@ -4,6 +4,7 @@ import Axios from 'axios'
 import imgg from './loginbg.jpg'
 import './login.css'
 import { useEffect } from 'react'
+import Cookies from 'js-cookie'
 
 
 
@@ -35,7 +36,8 @@ export default function Login() {
 
        
         setLoginStatus(response.data[0].emaillogin)
-       
+        Cookies.set("isauth",true)
+        Cookies.set("user",emaillogin)
         
         alert("Successful")
         e.preventDefault();
