@@ -22,12 +22,15 @@ import  Axios  from 'axios';
 import Userprofile from './components/User/Userprofile';
 import Bookticket from './components/User/Bookticket';
 import Bookings from './components/User/Bookings';
+import Cookies from 'js-cookie';
 // import 'react-toastify/dist/ReactToastify.css';
 
 
 
 // toast.configure();
 function App() {
+  // Cookies.set("isauth","false")
+  
   // const [isauth, setauth] = useState(false)
   // const [authemail, setauthemail] = useState('')
 

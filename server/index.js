@@ -111,6 +111,21 @@ app.post('/loginuser', (req, res) => {
 
     )
 })
+app.post('/getuserdetails',(req,res)=>{
+    const mail=req.body.useremail
+
+    db.query("SELECT * FROM users where email=? ",[mail],(err,result)=>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            console.log(result);
+            res.send(result)
+        }
+    })
+})
 
 app.get("/loginchk", (req, res) => {
     if (req.session.user) {

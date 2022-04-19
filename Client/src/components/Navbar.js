@@ -1,6 +1,18 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import Cookies from 'js-cookie';
+
+
 export default function Navbar() {
+
+  const handlelogout=()=>{
+    Cookies.set("isauth","false");
+    Cookies.remove("user")
+    window.location.href="/";
+   
+  }
+
+
   return (
     
     <>
@@ -13,7 +25,7 @@ export default function Navbar() {
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
 
-        <li className="nav-item pe-3" style={{display:'flex',alignItems:'center'}}>
+        <li className="nav-item pe-3" style={{display:Cookies.get("isauth")==="false"?'flex':'none',alignItems:'center'}}>
         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
         width="24" height="24" fill='white'
         viewBox="0 0 64 64"
@@ -21,7 +33,7 @@ export default function Navbar() {
          <Link class="nav-link active" aria-current="page" to="/">Home</Link >
         </li>
 
-        <li className="nav-item pe-3"  style={{display:'flex',alignItems:'center'}} >
+        <li className="nav-item pe-3"  style={{display:Cookies.get("isauth")==="false"?'flex':'none',alignItems:'center'}} >
         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
         width="24" height="24"
         viewBox="0 0 48 48"
@@ -29,18 +41,40 @@ export default function Navbar() {
 <Link class="nav-link active" aria-current="page" to="/about">About</Link >
         </li>
 
-        <li className="nav-item pe-3" style={{display:'flex',alignItems:'center'}} >
+        <li className="nav-item pe-3" style={{display:Cookies.get("isauth")==="false"?'flex':'none',alignItems:'center'}} >
 
         <img style={{height:'24px',width:'24px'}} alt='' src="https://img.icons8.com/external-bearicons-outline-color-bearicons/64/000000/external-sign-up-call-to-action-bearicons-outline-color-bearicons-1.png"/>
           <Link className="nav-link active" to="/signup">Sign Up </Link >
         </li>
 
 
-        <li className="nav-item pe-3" style={{display:'flex',alignItems:'center'}}>
+        <li className="nav-item pe-3" style={{display:Cookies.get("isauth")==="false"?'flex':'none',alignItems:'center'}}>
         <img  style={{height:'28px',width:'28px'}} src="https://img.icons8.com/external-prettycons-lineal-color-prettycons/49/000000/external-key-technology-prettycons-lineal-color-prettycons.png" alt=''/>
           <Link className="nav-link active" to="/login">Login</Link >
         </li>
+        
+
+        <li className="nav-item pe-3" style={{display:Cookies.get("isauth")==="true"?'flex':'none',alignItems:'center'}}>
+        <img  style={{height:'28px',width:'28px'}} src="https://img.icons8.com/color/48/000000/test-account.png" alt=''/>
+          <Link className="nav-link active" to="/user/profile">Profile</Link >
+        </li>
+   
+
+        <li className="nav-item pe-3" style={{display:Cookies.get("isauth")==="true"?'flex':'none',alignItems:'center'}}>
+        <img  style={{height:'28px',width:'28px'}} src="https://img.icons8.com/color/48/000000/train-ticket.png" alt=''/>
+          <Link className="nav-link active" to="/user/bookticket" >Book Ticket</Link >
+        </li>
        
+        <li className="nav-item pe-3" style={{display:Cookies.get("isauth")==="true"?'flex':'none',alignItems:'center'}}>
+        <img  style={{height:'28px',width:'28px'}} src="https://img.icons8.com/color/48/000000/ingredients-list.png" alt=''/>
+          <Link className="nav-link active" to="/user/bookings" >Bookings</Link >
+        </li>
+        <li className="nav-item pe-3" style={{display:Cookies.get("isauth")==="true"?'flex':'none',alignItems:'center'}}>
+        <img  style={{height:'28px',width:'28px'}} src="https://img.icons8.com/color/48/000000/logout-rounded--v1.png" alt=''/>
+          <Link className="nav-link active" to="/" onClick={handlelogout}>Logout</Link >
+        </li>
+
+
       </ul>
       
     </div>

@@ -1,12 +1,26 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import Cookies from 'js-cookie'
+import { useEffect,useState } from 'react'
+import  Axios  from 'axios'
 
 
 export default function Userprofile() {
+
+  const [userdetails, setuserdetails] = useState({})
+  useEffect(() => {
+    Axios.post('http://localhost:3001/getuserdetails',{
+        useremail:Cookies.get("user")
+      
+    }).then((response)=>{
+          setuserdetails(response.data[0])
+    })
+  }, [])
+  
   return (
     <>
     <br />
+
     {/* <h1 className='text-center' style={{color:'white'}}>Hello User</h1> */}
     <br /><br />
 
@@ -19,15 +33,15 @@ export default function Userprofile() {
         <tbody>
         <tr className='text-center'>
         <td style={{width: "404px",height:'50px',fontSize:'20px'}}>Name</td>
-        <td style={{width: "404px",height:'50px'}}>{Cookies.get("user")}</td>
+        <td style={{width: "404px",height:'50px'}}>{userdetails.name}</td>
         </tr>
         <tr className='text-center'>
         <td style={{width: "354px",height:'50px'}}>Email</td>
-        <td style={{width: "354px",height:'50px'}}>user@gmail.com</td>
+        <td style={{width: "354px",height:'50px'}}>{Cookies.get("user")}</td>
         </tr>
         <tr className='text-center'>
         <td style={{width: "354px",height:'50px'}}>MobileNumber</td>
-        <td style={{width: "354px",height:'50px'}}>+91 1234567891</td>
+        <td style={{width: "354px",height:'50px'}}>{userdetails.mobilenumber}</td>
         </tr>
         <tr className='text-center'>
         <td style={{width: "354px",height:'50px'}}>Role</td>
@@ -35,7 +49,7 @@ export default function Userprofile() {
         </tr>
         <tr className='text-center'>
         <td style={{width: "354px",height:'50px'}}>Age</td>
-        <td style={{width: "354px",height:'50px'}}>19</td>
+        <td style={{width: "354px",height:'50px'}}>{userdetails.age}</td>
         </tr>
         {/* <tr>
         <td style="width: 34px;">&nbsp;</td>
