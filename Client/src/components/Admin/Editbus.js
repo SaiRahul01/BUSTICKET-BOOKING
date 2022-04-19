@@ -9,6 +9,8 @@ export default function Editbus() {
 	const [newtostation, setnewtostation] = useState('')
 	const [newcapacity, setnewcapacity] = useState(0)
  const [newbusdriver, setnewbusdriver] = useState('')
+ const [starttime, setstarttime] = useState('')
+ const [reachtime, setreachtime] = useState('')
 
 
     const {id}=useParams();
@@ -23,7 +25,9 @@ export default function Editbus() {
             fstation:newfromstation,
             tstation:newtostation,
             cap:newcapacity,
-            busdriver:newbusdriver
+            busdriver:newbusdriver,
+            starttime:starttime,
+            reachtime:reachtime
            
 
         }).then((resp)=>{
@@ -68,7 +72,18 @@ export default function Editbus() {
 				</div>
         <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 					
+					<input class="input100" type="time" name="email" onChange={e=>setstarttime(e.target.value)}   placeholder="Start Time" required/>
+					<span class="focus-input100"></span>
+				</div>
+
+        <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					
 					<input class="input100" type="text" name="email" onChange={e=>setnewtostation(e.target.value)}   placeholder="To Bus Stop" required/>
+					<span class="focus-input100"></span>
+				</div>
+        <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					
+					<input class="input100" type="time" name="email" onChange={e=>setreachtime(e.target.value)}   placeholder="Reach Time" required/>
 					<span class="focus-input100"></span>
 				</div>
 

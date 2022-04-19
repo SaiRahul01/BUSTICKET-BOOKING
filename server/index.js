@@ -201,7 +201,9 @@ app.post('/admin/updatebus', (req, res) => {
     const cap = req.body.cap
     const id = req.body.id
     const driver = req.body.busdriver
-    db.query("UPDATE bus SET busname=?,fromcity=?,tocity=?,capacity=?,busdriver=? where busid=?", [name, fstation, tstation, cap, driver, id], (err, result) => {
+    const starttime=req.body.starttime
+    const reachtime=req.body.reachtime
+    db.query("UPDATE bus SET busname=?,fromcity=?,tocity=?,capacity=?,busdriver=?,starttime=?,reachtime=? where busid=?", [name, fstation, tstation, cap, driver,starttime,reachtime, id], (err, result) => {
         if (err) {
             console.log(err);
         }
