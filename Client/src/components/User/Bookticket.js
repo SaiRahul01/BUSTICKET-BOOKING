@@ -2,16 +2,37 @@ import React from 'react'
 import './Bookticket.css'
 import { useState } from 'react';
 import {Link} from "react-router-dom"
+import Axios from 'axios';
 
 export default function Bookticket() {
-  const [fromdate, setfromdate] = useState('')
-   const [todate, settodate] = useState('')
+  const [fromcity, setfromcity] = useState('')
+   const [tocity, settocity] = useState('')
    const [tdate, settdate] = useState('')
+   const [f, setf] = useState(true)
+
+   const handlecheckbuses=()=>{
+	   Axios.post('http://localhost:3001/user/checkbuses',{
+		   fromdate:fromcity,
+		   todate:tocity,
+		   tdate:tdate
+	   }).then((response)=>{
+		   if(response.body.f===true)
+		   {
+
+		   }
+		   else
+		   {
+
+		   }
+
+	   })
+   }
 
   return (
     <>
-   
-    <div id="booking" class="section" >
+	{
+		f===true?
+		<div id="booking" class="section" >
 		<div class="section-center">
 			<div class="container">
 				<div class="row">
@@ -25,7 +46,7 @@ export default function Bookticket() {
 								<div class="col-md-6" >
 									<div class="form-group" >
 										<span class="form-label" style={{color:'black'}}>Date of Journey</span>
-										<input class="form-control" type="date" required/>
+										<input class="form-control" onChange={e=>settdate(e.target.value)} type="date" required/>
 									</div>
 								</div>
 								{/* <div class="col-md-6">
@@ -61,21 +82,25 @@ export default function Bookticket() {
 							</div> */}
 							<div class="form-group">
 								<span class="form-label" style={{color:'black',marginLeft:'0px'}}>From</span>
-								<input class="form-control" type="email" placeholder="From City" required/>
+								<input class="form-control" type="email" onChange={e=>setfromcity(e.target.value)}  placeholder="From City" required/>
 							</div>
 							<div class="form-group">
 								<span class="form-label" style={{color:'black'}}>To</span>
-								<input class="form-control" type="tel" placeholder="To City" required/>
+								<input class="form-control" type="tel" onChange={e=>settocity(e.target.value)}  placeholder="To City" required/>
 							</div>
 							<div class="form-btn text-center" style={{textDecoration:'none'}}>
-								<Link type='button' to='/user/getbuses' style={{textDecoration:'none',fontSize:'20px'}}  class="submit-btn">Check Buses</Link>
+								<button type='button' onClick={handlecheckbuses} style={{textDecoration:'none',fontSize:'20px'}}  class="submit-btn">Check Buses</button>
 							</div>
 						</form>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>:
+	<h1 style={{color:'white'}}>Ded</h1>
+	}
+   
+    
     </>
   )
 }

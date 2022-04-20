@@ -12,10 +12,10 @@ export default function Addbus() {
 	const [driver, setdriver] = useState('')
 	const [starttime, setstarttime] = useState('')
 	const [reachtime, setreachtime] = useState('')
+	const [seatprice, setseatprice] = useState('')
 
 	const handleaddbus = (e) => {
-		if(busname==='' || fromstation==='' ||tostation==='' || capacity==='' || driver==='' || starttime==='' ||  reachtime==='' )
-		{
+		if (busname === '' || fromstation === '' || tostation === '' || capacity === '' || driver === '' || starttime === '' || reachtime === '') {
 			alert('Please Fill all fields')
 			return
 		}
@@ -25,8 +25,9 @@ export default function Addbus() {
 			fromstation: fromstation,
 			tostation: tostation,
 			capacity: capacity,
-			starttime:starttime,
-			reachtime:reachtime
+			starttime: starttime,
+			reachtime: reachtime,
+			
 		}).then(
 			(response) => {
 				if (response.data.op === 'fail') {
@@ -52,47 +53,55 @@ export default function Addbus() {
 						<span class="contact100-form-title">
 							Add a Bus
 						</span>
-<div className="fc">
-						<div class="wrap-input100 validate-input" data-validate="Name is required">
+						<div className="fc">
+							<div class="wrap-input100 validate-input" data-validate="Name is required">
 
-							<input class="input100" type="text" onChange={e => setbusname(e.target.value)} name="name" placeholder="Bus Name" required />
-							<span class="focus-input100"></span>
-						</div>
-						<div class="wrap-input100 validate-input" data-validate="Name is required">
+								<input class="input100" type="text" onChange={e => setbusname(e.target.value)} name="name" placeholder="Bus Name" required />
+								<span class="focus-input100"></span>
+							</div>
+							<div class="wrap-input100 validate-input" data-validate="Name is required">
 
-							<input class="input100" type="text" onChange={e => setdriver(e.target.value)} name="name" placeholder="Bus Driver" required />
-							<span class="focus-input100"></span>
-						</div>
-</div>
-<div className="fc">
-						<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-
-							<input class="input100" type="text" name="email" onChange={e => setfromstation(e.target.value)} placeholder="From Bus Stop" required />
-							<span class="focus-input100"></span>
-						</div>
-						<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-
-							<input class="input100" type="time" name="email" onChange={e => setstarttime(e.target.value)} placeholder="Start Time" required />
-							<span class="focus-input100"></span>
-						</div>
+								<input class="input100" type="text" onChange={e => setdriver(e.target.value)} name="name" placeholder="Bus Driver" required />
+								<span class="focus-input100"></span>
+							</div>
 						</div>
 						<div className="fc">
-						<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+							<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
 
-							<input class="input100" type="text" name="email" onChange={e => settostation(e.target.value)} placeholder="To Bus Stop" required />
-							<span class="focus-input100"></span>
-						</div>
-						<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+								<input class="input100" type="text" name="email" onChange={e => setfromstation(e.target.value)} placeholder="From Bus Stop" required />
+								<span class="focus-input100"></span>
+							</div>
+							<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
 
-							<input class="input100" type="time" name="email" onChange={e => setreachtime(e.target.value)} placeholder="Reach Time" required />
-							<span class="focus-input100"></span>
+								<input class="input100" type="time" name="email" onChange={e => setstarttime(e.target.value)} placeholder="Start Time" required />
+								<span class="focus-input100"></span>
+							</div>
 						</div>
-</div>
-						<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+						<div className="fc">
+							<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
 
-							<input class="input100" type="number" name="email" onChange={e => setcapacity(e.target.value)} placeholder="Capacity" required />
-							<span class="focus-input100"></span>
+								<input class="input100" type="text" name="email" onChange={e => settostation(e.target.value)} placeholder="To Bus Stop" required />
+								<span class="focus-input100"></span>
+							</div>
+							<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+
+								<input class="input100" type="time" name="email" onChange={e => setreachtime(e.target.value)} placeholder="Reach Time" required />
+								<span class="focus-input100"></span>
+							</div>
 						</div>
+						<div className="fc">
+							<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+
+								<input class="input100" type="number" name="email" onChange={e => setcapacity(e.target.value)} placeholder="Capacity" required />
+								<span class="focus-input100"></span>
+							</div>
+							<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+
+								<input class="input100" type="number" name="email" onChange={e => setseatprice(e.target.value)} placeholder="Seat Price" required />
+								<span class="focus-input100"></span>
+							</div>
+						</div>
+
 
 
 
