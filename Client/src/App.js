@@ -13,6 +13,7 @@ import {
 } from "react-router-dom";
 import Signup from './components/Signup';
 import Login from './components/Login';
+import AdminLogin from './components/AdminLogin';
 import About from './components/About';
 import { useState } from 'react';
 
@@ -74,6 +75,9 @@ function App() {
           <Route  exact path="/login"  element={<Login />}>
             
           </Route>
+          <Route  exact path="/adminlogin"  element={<AdminLogin />}>
+            
+            </Route>
           <Route exact path="/admin/profile" element={<Aprofile />}>
 
           </Route>

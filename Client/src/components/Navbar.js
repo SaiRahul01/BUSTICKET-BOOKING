@@ -50,25 +50,53 @@ export default function Navbar() {
 
         <li className="nav-item pe-3" style={{display:Cookies.get("isauth")==="false"?'flex':'none',alignItems:'center'}}>
         <img  style={{height:'28px',width:'28px'}} src="https://img.icons8.com/external-prettycons-lineal-color-prettycons/49/000000/external-key-technology-prettycons-lineal-color-prettycons.png" alt=''/>
-          <Link className="nav-link active" to="/login">Login</Link >
+          <Link className="nav-link active" to="/login">User Login</Link >
+        </li>
+
+        <li className="nav-item pe-3" style={{display:Cookies.get("isauth")==="false"?'flex':'none',alignItems:'center'}}>
+        <img  style={{height:'28px',width:'28px'}} src="https://img.icons8.com/external-prettycons-lineal-color-prettycons/49/000000/external-key-technology-prettycons-lineal-color-prettycons.png" alt=''/>
+          <Link className="nav-link active" to="/adminlogin">Admin Login</Link >
         </li>
         
 
-        <li className="nav-item pe-3" style={{display:Cookies.get("isauth")==="true"?'flex':'none',alignItems:'center'}}>
+        <li className="nav-item pe-3" style={{display:Cookies.get("isauth")==="true" && Cookies.get("user")?'flex':'none',alignItems:'center'}}>
         <img  style={{height:'28px',width:'28px'}} src="https://img.icons8.com/color/48/000000/test-account.png" alt=''/>
           <Link className="nav-link active" to="/user/profile">Profile</Link >
         </li>
+
+        <li className="nav-item pe-3" style={{display:Cookies.get("isauth")==="true" && Cookies.get("admin")?'flex':'none',alignItems:'center'}}>
+        <img  style={{height:'28px',width:'28px'}} src="https://img.icons8.com/color/48/000000/test-account.png" alt=''/>
+          <Link className="nav-link active" to="/admin/profile">Profile</Link >
+        </li>
    
 
-        <li className="nav-item pe-3" style={{display:Cookies.get("isauth")==="true"?'flex':'none',alignItems:'center'}}>
+        <li className="nav-item pe-3" style={{display:(Cookies.get("isauth")==="true" && Cookies.get("user"))?'flex':'none',alignItems:'center'}}>
         <img  style={{height:'28px',width:'28px'}} src="https://img.icons8.com/color/48/000000/train-ticket.png" alt=''/>
           <Link className="nav-link active" to="/user/bookticket" >Book Ticket</Link >
         </li>
+
+        <li className="nav-item pe-3" style={{display:(Cookies.get("isauth")==="true" && Cookies.get("admin"))?'flex':'none',alignItems:'center'}}>
+        <img  style={{height:'28px',width:'28px'}} src="https://cdn-icons.flaticon.com/png/512/3066/premium/3066259.png?token=exp=1650434155~hmac=f5830b47d76ac4b0a90e6fe251fdf49d" alt=''/>
+          <Link className="nav-link active" to="/admin/addbus" >Add Bus</Link >
+        </li>
        
-        <li className="nav-item pe-3" style={{display:Cookies.get("isauth")==="true"?'flex':'none',alignItems:'center'}}>
+        <li className="nav-item pe-3" style={{display:Cookies.get("isauth")==="true" && Cookies.get("user")?'flex':'none',alignItems:'center'}}>
         <img  style={{height:'28px',width:'28px'}} src="https://img.icons8.com/color/48/000000/ingredients-list.png" alt=''/>
           <Link className="nav-link active" to="/user/bookings" >Bookings</Link >
         </li>
+
+        <li className="nav-item pe-3" style={{display:(Cookies.get("isauth")==="true" && Cookies.get("admin"))?'flex':'none',alignItems:'center'}}>
+        <img  style={{height:'28px',width:'28px'}} src="https://cdn-icons-png.flaticon.com/512/1162/1162914.png" alt=''/>
+          <Link className="nav-link active" to="/admin/viewbuses" >View Buses</Link >
+        </li>
+
+        <li className="nav-item pe-3" style={{display:(Cookies.get("isauth")==="true" && Cookies.get("admin"))?'flex':'none',alignItems:'center'}}>
+        <img  style={{height:'28px',width:'28px'}} src="https://cdn-icons.flaticon.com/png/512/1144/premium/1144709.png?token=exp=1650434366~hmac=1356f17d1cf60eeb81cc967506ac8ade" alt=''/>
+          <Link className="nav-link active" to="/admin/viewusers" >View Users</Link >
+        </li>
+
+
+        
         <li className="nav-item pe-3" style={{display:Cookies.get("isauth")==="true"?'flex':'none',alignItems:'center'}}>
         <img  style={{height:'28px',width:'28px'}} src="https://img.icons8.com/color/48/000000/logout-rounded--v1.png" alt=''/>
           <Link className="nav-link active" to="/" onClick={handlelogout}>Logout</Link >

@@ -22,7 +22,7 @@ export default function Login() {
 
   const handlelogin = (e) => {
 
-    Axios.post('http://localhost:3001/loginuser', {
+    Axios.post('http://localhost:3001/loginadmin', {
 
       username: emaillogin,
       password: passwordlogin,
@@ -37,10 +37,10 @@ export default function Login() {
        
         setLoginStatus(response.data[0].emaillogin)
         Cookies.set("isauth","true")
-        Cookies.set("user",emaillogin)
+        Cookies.set("admin",emaillogin)
         
         // alert("Successful")
-        window.location.href="/user/profile";
+        window.location.href="/admin/profile";
         // e.preventDefault();
       }
 
@@ -55,6 +55,7 @@ export default function Login() {
   //     if(result)
   //     {
   //       alert(result.user)
+
   //     }
   //     console.log(result);
   //   })
@@ -67,11 +68,11 @@ export default function Login() {
         <div className="content" style={{ paddingTop: '200px', width: '400px' }}>
           {/* <img src="https://thumbs.dreamstime.com/b/retro-train-illustration-isolated-white-background-design-element-logo-label-emblem-sign-retro-train-illustration-isolated-114272289.jpg" alt=''/> */}
           <div class="login-box">
-            <h2>User Login</h2>
+            <h2>Admin Login</h2>
             <form>
               <div class="user-box">
                 <input type="text" onChange={e => setemaillogin(e.target.value)} name="" required="" />
-                <label>User Email</label>
+                <label>Admin Email</label>
               </div>
               <div class="user-box">
                 <input type="password" onChange={e => setpasswordlogin(e.target.value)} name="" required="" />

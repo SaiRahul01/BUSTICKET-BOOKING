@@ -111,10 +111,48 @@ app.post('/loginuser', (req, res) => {
 
     )
 })
+
+app.post('/loginadmin', (req, res) => {
+    const bemail = req.body.username
+    const bpassword = req.body.password
+
+    db.query("SELECT email,password FROM admin WHERE email = ? AND password = ?", [bemail, bpassword],
+        (err, result) => {
+            if (err) {
+                res.send({ err: err });
+            }
+
+            if (result.length > 0) {
+                // req.session.user = result`
+                console.log(req.session.user);
+                res.send(result);
+            } else {
+                res.send({ message: "Wrong username/password combination" });
+            }
+
+        }
+
+    )
+})
 app.post('/getuserdetails',(req,res)=>{
     const mail=req.body.useremail
 
     db.query("SELECT * FROM users where email=? ",[mail],(err,result)=>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            console.log(result);
+            res.send(result)
+        }
+    })
+})
+app.post('/getadmindetails',(req,res)=>{
+    const mail=req.body.adminemail
+
+    db.query("SELECT * FROM admin where email=? ",[mail],(err,result)=>{
         if(err)
         {
             console.log(err);
