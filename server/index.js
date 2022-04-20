@@ -57,7 +57,7 @@ app.post('/registeruser', (req, res) => {
     const bmobilenumber = req.body.mobilenumber
     const bage = req.body.age
     const bcity = req.body.city
-    const bpincode = req.body.pincode
+
     const bstreetname = req.body.streetname
     const bhouseno = req.body.houseno
     const bgender = req.body.gender
@@ -68,7 +68,7 @@ app.post('/registeruser', (req, res) => {
 
 
 
-    db.query("INSERT INTO users(name,email,password,mobilenumber,houseno,age,streetname,city,pincode,gender) VALUES(?,?,?,?,?,?,?,?,?,? )", [bname, bemail, bpassword, bmobilenumber, bhouseno, bage, bstreetname, bcity, bpincode, bgender], (err, results) => {
+    db.query("INSERT INTO users(name,email,password,mobilenumber,houseno,age,streetname,city,gender) VALUES(?,?,?,?,?,?,?,?,? )", [bname, bemail, bpassword, bmobilenumber, bhouseno, bage, bstreetname, bcity, bgender], (err, results) => {
         if (err) {
             console.log(err);
             res.send({ op: 'ded' })

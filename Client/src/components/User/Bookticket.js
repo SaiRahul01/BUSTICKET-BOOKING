@@ -1,6 +1,7 @@
 import React from 'react'
 import './Bookticket.css'
 import { useState } from 'react';
+import {Link} from "react-router-dom"
 
 export default function Bookticket() {
   const [fromdate, setfromdate] = useState('')
@@ -66,8 +67,8 @@ export default function Bookticket() {
 								<span class="form-label" style={{color:'black'}}>To</span>
 								<input class="form-control" type="tel" placeholder="To City" required/>
 							</div>
-							<div class="form-btn">
-								<button class="submit-btn">Check Buses</button>
+							<div class="form-btn text-center" style={{textDecoration:'none'}}>
+								<Link type='button' to='/user/getbuses' style={{textDecoration:'none',fontSize:'20px'}}  class="submit-btn">Check Buses</Link>
 							</div>
 						</form>
 					</div>

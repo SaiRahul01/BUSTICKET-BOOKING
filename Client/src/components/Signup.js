@@ -15,7 +15,7 @@ export default function Signup() {
     const [mobilenumber, setmobilenumber] = useState('')
     const [age, setage] = useState(0)
     const [city, setcity] = useState('')
-    const [pincode, setpincode] = useState(0)
+  
     const [streetname, setstreetname] = useState('')
     const [houseno, sethouseno] = useState(0)
     const [gender, setgender] = useState('')
@@ -36,7 +36,7 @@ export default function Signup() {
 
 
     const handleregister = (e) => {
-        if (name === '' || email === '' || password === '' || mobilenumber === '' || age === '' || city === '' || pincode === '' || streetname === '' || houseno === '') {
+        if (name === '' || email === '' || password === '' || mobilenumber === '' || age === '' || city === '' || streetname === '' || houseno === '') {
             toast.error('Enter all fields')
             return;
         }
@@ -76,7 +76,7 @@ export default function Signup() {
             mobilenumber: mobilenumber,
             age: age,
             city: city,
-            pincode: pincode,
+        
             houseno: houseno,
             streetname: streetname,
             gender: gender
@@ -245,8 +245,8 @@ export default function Signup() {
 
                             </div>
 
-                            <div className="input-group">
-                                <input className="input--style-3" type="number" onChange={e => setpincode(e.target.value)} placeholder="Pincode" name="email" required />
+                            <div className="input-group" style={{visibility:'hidden'}}>
+                               <br /><br /><br />
 
                             </div>
 

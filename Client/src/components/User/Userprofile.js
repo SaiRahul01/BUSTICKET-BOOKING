@@ -28,9 +28,13 @@ export default function Userprofile() {
         <div>
             <img style={{width:'250px',height:'250px',marginTop:'70px',marginLeft:'20px'}} src="https://cswnn.edu.in/system/files/2021-02/avatar-png-1-original.png" alt="" />
         </div>
-        <div style={{marginLeft:'300px',marginTop:'-250px'}}>
+        <div style={{marginLeft:'300px',marginTop:'-270px'}}>
         <table style={{width: "404px",fontSize:'20px'}}>
         <tbody>
+        <tr className='text-center'>
+        <td style={{width: "404px",height:'50px',fontSize:'20px'}}>User ID</td>
+        <td style={{width: "404px",height:'50px'}}>{userdetails.id}</td>
+        </tr>
         <tr className='text-center'>
         <td style={{width: "404px",height:'50px',fontSize:'20px'}}>Name</td>
         <td style={{width: "404px",height:'50px'}}>{userdetails.name}</td>
