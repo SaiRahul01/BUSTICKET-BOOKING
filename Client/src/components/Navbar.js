@@ -8,14 +8,19 @@ export default function Navbar() {
   const handlelogout=()=>{
 
     Cookies.set("isauth","false");
-    if(Cookies.get("user"))
+    if(Cookies.get("role"==="user"))
     {
-      Cookies.remove("user")
+      
+      Cookies.remove("role");
     }
     else
     {
-      Cookies.remove("admin")
+      Cookies.remove("role");
+   
+
     }
+    Cookies.remove("user");
+    Cookies.remove("admin")
     
     window.location.href="/";
    
