@@ -87,12 +87,24 @@ app.post('/registeruser', (req, res) => {
     })
 
 })
-// app.post('/user/checkbuses',(req,res)=>{
-//     const tdate=req.body.tdate;
-//     const fromcity=req.body.fromcity;
-//     const tocity=req.body.tocity;
-//     db.query("SELECT * FROM bus_status,[tdate,fromcity,tocity])
-// })
+app.post('/user/checkbuses',(req,res)=>{
+    const tdate=req.body.tdate;
+    const fromcity=req.body.fromcity;
+    const tocity=req.body.tocity;
+    db.query("SELECT * FROM bus where fromcity=? and tocity=?",[fromcity,tocity],(err,results)=>{
+        if(err)
+        {
+            console.log(err);
+            res.send({f:false})
+        }
+        else
+        {
+            console.log("Result:->"+results);
+            res.send(results)
+        }
+
+    })
+})
 
 app.post('/loginuser', (req, res) => {
     const bemail = req.body.username

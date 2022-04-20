@@ -9,30 +9,33 @@ export default function Bookticket() {
    const [tocity, settocity] = useState('')
    const [tdate, settdate] = useState('')
    const [f, setf] = useState(true)
+   const [availablebuses, setavailablebuses] = useState([])
 
    const handlecheckbuses=()=>{
+	   console.log(fromcity+"\t\t"+tocity);
 	   Axios.post('http://localhost:3001/user/checkbuses',{
-		   fromdate:fromcity,
-		   todate:tocity,
+		   fromcity:fromcity,
+		   tocity:tocity,
 		   tdate:tdate
 	   }).then((response)=>{
-		   if(response.body.f===true)
-		   {
-
-		   }
-		   else
-		   {
-
-		   }
+		//    if(response.body.f===false)
+		//    {
+		// 		alert('Error')
+		//    }
+		//    else
+		   
+		setavailablebuses(response.data);
+		  setf(false) 
+		console.log(response.data);
 
 	   })
    }
 
   return (
     <>
-	{
-		f===true?
-		<div id="booking" class="section" >
+	
+		
+		<div id="booking" class="section" style={{display:f?'flex':'none'}} >
 		<div class="section-center">
 			<div class="container">
 				<div class="row">
@@ -56,37 +59,14 @@ export default function Bookticket() {
 									</div>
 								</div> */}
 							</div>
-							{/* <div class="row">
-								<div class="col-md-6">
-									<div class="form-group">
-										<span class="form-label" style={{color:'black'}}>Adults</span>
-										<select class="form-control">
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
-										</select>
-										<span class="select-arrow"></span>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<span class="form-label" style={{color:'black'}}>Children</span>
-										<select class="form-control">
-											<option>0</option>
-											<option>1</option>
-											<option>2</option>
-										</select>
-										<span class="select-arrow"></span>
-									</div>
-								</div>
-							</div> */}
+							
 							<div class="form-group">
 								<span class="form-label" style={{color:'black',marginLeft:'0px'}}>From</span>
-								<input class="form-control" type="email" onChange={e=>setfromcity(e.target.value)}  placeholder="From City" required/>
+								<input class="form-control" type="text" onChange={e=>setfromcity(e.target.value)}  placeholder="From City" required/>
 							</div>
 							<div class="form-group">
 								<span class="form-label" style={{color:'black'}}>To</span>
-								<input class="form-control" type="tel" onChange={e=>settocity(e.target.value)}  placeholder="To City" required/>
+								<input class="form-control" type="text" onChange={e=>settocity(e.target.value)}  placeholder="To City" required/>
 							</div>
 							<div class="form-btn text-center" style={{textDecoration:'none'}}>
 								<button type='button' onClick={handlecheckbuses} style={{textDecoration:'none',fontSize:'20px'}}  class="submit-btn">Check Buses</button>
@@ -96,9 +76,52 @@ export default function Bookticket() {
 				</div>
 			</div>
 		</div>
-	</div>:
-	<h1 style={{color:'white'}}>Ded</h1>
+	</div>
+	<br />
+	<h2 className='text-center' style={{color:'white'}}>Available Buses</h2>
+	<div className='row' >
+	{
+		// <h1 style={{color:'white'}}>Ded</h1>
+	
+	availablebuses.map((val,id)=>{
+		
+		return <>
+		<br />
+		<div class="card container col-md-4" style={{height:'330px'}}>
+			<img  className='' src="https://img.everychina.com/nimg/2c/f5/229f4cc7b31d3ff68cbdfb4bd412-300x300-0/novel_appearance_used_mini_bus_diesel_fuel_type_higer_brand_with_19_seat.jpg" style={{width:'150px',height:'150px',marginLeft:'80px'}} alt="Avatar" />
+			<div className=" row">
+	
+				<h3 className='text-center' style={{}}>{val.busname}</h3>
+				<hr />
+				<h4 style={{}}>From {val.fromcity}</h4>
+				<h4 style={{}}> To {val.tocity}</h4>
+				<br /><br /><br />
+				<button style={{width:'200px',marginLeft:'60px'}} className='btn btn-primary'>Book this Bus</button>
+			</div>
+			</div>
+		
+		 
+
+
+
+
+
+
+
+
+
+
+
+		 </>} 
+		
+		
+		)
+
 	}
+	</div>
+		
+		
+	
    
     
     </>
