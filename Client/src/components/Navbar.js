@@ -6,8 +6,17 @@ import Cookies from 'js-cookie';
 export default function Navbar() {
 
   const handlelogout=()=>{
+
     Cookies.set("isauth","false");
-    Cookies.remove("user")
+    if(Cookies.get("user"))
+    {
+      Cookies.remove("user")
+    }
+    else
+    {
+      Cookies.remove("admin")
+    }
+    
     window.location.href="/";
    
   }
