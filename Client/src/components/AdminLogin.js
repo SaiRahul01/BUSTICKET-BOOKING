@@ -38,6 +38,7 @@ export default function Login() {
         setLoginStatus(response.data[0].emaillogin)
         Cookies.set("isauth","true")
         Cookies.set("admin",emaillogin)
+        Cookies.set("role","admin");
         
         // alert("Successful")
         window.location.href="/admin/profile";
