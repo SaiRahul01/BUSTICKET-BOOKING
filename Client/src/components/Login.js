@@ -5,7 +5,7 @@ import imgg from './loginbg.jpg'
 import './login.css'
 import { useEffect } from 'react'
 import Cookies from 'js-cookie'
-
+import ProtectedRoute from '../ProtectedRoute'
 
 
 export default function Login() {
@@ -19,6 +19,7 @@ export default function Login() {
   const [passwordlogin, setpasswordlogin] = useState("")
 
   const [LoginStatus, setLoginStatus] = useState("")
+  // const [isLogged, setisLogged] = useState(false)
 
   const handlelogin = (e) => {
 
@@ -39,7 +40,7 @@ export default function Login() {
         Cookies.set("isauth","true")
         Cookies.set("user",emaillogin)
         Cookies.set("role","user")
-        
+        // setisLogged(true)
         // alert("Successful")
         window.location.href="/user/profile";
         // e.preventDefault();

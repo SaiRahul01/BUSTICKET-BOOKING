@@ -5,6 +5,7 @@ import Addbus from './components/Admin/Addbus'
 import Viewbuses from './components/Admin/Viewbuses'
 import Editbus from './components/Admin/Editbus'
 import Viewusers from './components/Admin/Viewusers'
+import ProtectedRoute from './ProtectedRoute'
 
 import {
   BrowserRouter as Router,
@@ -76,8 +77,11 @@ function App() {
             
           </Route>
           <Route  exact path="/adminlogin"  element={<AdminLogin />}>
+
+          </Route>
+
+          <Route element = {<ProtectedRoute isLogged={Cookies.get("isauth")}/>} >
             
-            </Route>
           <Route exact path="/admin/profile" element={<Aprofile />}>
 
           </Route>
@@ -103,6 +107,8 @@ function App() {
 
         </Route>
         <Route exact path="/user/bookings" element={<Bookings />}>
+
+        </Route>
 
         </Route>
 
