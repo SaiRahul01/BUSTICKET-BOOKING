@@ -27,6 +27,7 @@ export default function Addbus() {
 			capacity: capacity,
 			starttime: starttime,
 			reachtime: reachtime,
+			ticketprice:seatprice
 			
 		}).then(
 			(response) => {
@@ -108,7 +109,7 @@ export default function Addbus() {
 
 
 
-						<button onClick={handleaddbus} type="submit">Add</button>
+						<button className='btn btn-outline-success ' onClick={handleaddbus} type="submit">Add</button>
 					</form>
 				</div>
 			</div>

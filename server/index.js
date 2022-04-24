@@ -200,7 +200,8 @@ app.post('/addbus', (req, res) => {
     const driver = req.body.driver
     const starttime=req.body.starttime
     const reachtime=req.body.reachtime
-    db.query("INSERT INTO bus(busname,capacity,fromcity,tocity,busdriver,starttime,reachtime) VALUES(?,?,?,?,?,?,?)", [busname, capacity, fromstation, tostation, driver,starttime,reachtime], (err, result) => {
+    const ticketprice=req.body.ticketprice
+    db.query("INSERT INTO bus(busname,capacity,fromcity,tocity,busdriver,starttime,reachtime,ticketprice) VALUES(?,?,?,?,?,?,?,?)", [busname, capacity, fromstation, tostation, driver,starttime,reachtime,ticketprice], (err, result) => {
         if (err) {
             console.log(err);
             res.send({ op: 'fail' })
@@ -258,7 +259,8 @@ app.post('/admin/updatebus', (req, res) => {
     const driver = req.body.busdriver
     const starttime=req.body.starttime
     const reachtime=req.body.reachtime
-    db.query("UPDATE bus SET busname=?,fromcity=?,tocity=?,capacity=?,busdriver=?,starttime=?,reachtime=? where busid=?", [name, fstation, tstation, cap, driver,starttime,reachtime, id], (err, result) => {
+    const ticketprice=req.body.ticketprice
+    db.query("UPDATE bus SET busname=?,fromcity=?,tocity=?,capacity=?,busdriver=?,starttime=?,reachtime=?,ticketprice=? where busid=?", [name, fstation, tstation, cap, driver,starttime,reachtime, ticketprice,id], (err, result) => {
         if (err) {
             console.log(err);
         }

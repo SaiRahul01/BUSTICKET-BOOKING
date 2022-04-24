@@ -11,6 +11,7 @@ export default function Editbus() {
  const [newbusdriver, setnewbusdriver] = useState('')
  const [starttime, setstarttime] = useState('')
  const [reachtime, setreachtime] = useState('')
+ const [ticketprice, setticketprice] = useState(0)
 
 
     const {id}=useParams();
@@ -18,7 +19,7 @@ export default function Editbus() {
     const handlesave=(e)=>{
         // alert(key)
         // alert('Name'+newbusname+"\n From:"+newfromstation+"\nTo: "+newtostation+"\n Capacity: "+newcapacity)
-        if(newbusname==='' || newfromstation==='' ||newtostation==='' || newcapacity==='' ||newbusdriver==='' || starttime==='' ||  reachtime==='' )
+        if(newbusname==='' || ticketprice==='' || newfromstation==='' ||newtostation==='' || newcapacity==='' ||newbusdriver==='' || starttime==='' ||  reachtime==='' )
 		{
 			alert('Please Fill all fields')
 			return
@@ -32,7 +33,8 @@ export default function Editbus() {
             cap:newcapacity,
             busdriver:newbusdriver,
             starttime:starttime,
-            reachtime:reachtime
+            reachtime:reachtime,
+            ticketprice:ticketprice
            
 
         }).then((resp)=>{
@@ -94,18 +96,25 @@ export default function Editbus() {
 					<span class="focus-input100"></span>
 				</div>
         </div>
-        <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-					
-					<input class="input100" type="number" name="email" onChange={e=>setnewcapacity(e.target.value)}  placeholder="New Capacity" required/>
-					<span class="focus-input100"></span>
-				</div>
+        <div className="fc">
+							<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+
+								<input class="input100" type="number" name="email" onChange={e => setnewcapacity(e.target.value)} placeholder="Capacity" required />
+								<span class="focus-input100"></span>
+							</div>
+							<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+
+								<input class="input100" type="number" name="email" onChange={e => setticketprice(e.target.value)} placeholder="Seat Price" required />
+								<span class="focus-input100"></span>
+							</div>
+						</div>
 
 			
 
 				
 
 
-        <button  onClick={handlesave}>Update</button>
+        <button className='btn btn-outline-success '  onClick={handlesave}>Update</button>
 			</form>
 		</div>
 	</div>

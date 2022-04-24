@@ -12,6 +12,12 @@ export default function Bookticket() {
    const [availablebuses, setavailablebuses] = useState([])
 
    const handlecheckbuses=()=>{
+	if(fromcity==='' || tocity==='' || tdate==='')
+	{
+		alert('Please enter all fields !');
+		return;
+	}
+
 	   console.log(fromcity+"\t\t"+tocity);
 	   Axios.post('http://localhost:3001/user/checkbuses',{
 		   fromcity:fromcity,
@@ -48,8 +54,8 @@ export default function Bookticket() {
 							<div className='text-center' class="row" style={{marginLeft:'0px'}}>
 								<div class="col-md-6" >
 									<div class="form-group" >
-										<span class="form-label" style={{color:'black'}}>Date of Journey</span>
-										<input class="form-control" onChange={e=>settdate(e.target.value)} type="date" required/>
+										<span class="form-label" style={{color:'black'}} >Date of Journey</span>
+										<input class="form-control" onChange={e=>settdate(e.target.value) } min={new Date().toISOString().split('T')[0]} type="date" required/>
 									</div>
 								</div>
 								{/* <div class="col-md-6">

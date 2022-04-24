@@ -20,7 +20,7 @@ export default function Homegif() {
     <br /><br />
     <div className="card text-center" style={{borderRadius:'20px'}}>
     <h3 style={{marginTop:'90px'}} >Already Existing User?</h3>
-    <Link type='button' className="button-34 nav-link active ms-auto me-auto " aria-current="page" role="button" to="/login" style={{marginTop:'50px'}}>LOGIN</Link>
+    <Link type='button' className="button-34 nav-link active ms-auto me-auto " aria-current="page" role="button" to="/login" style={{marginTop:'20px'}}>LOGIN</Link>
       
     </div>
     

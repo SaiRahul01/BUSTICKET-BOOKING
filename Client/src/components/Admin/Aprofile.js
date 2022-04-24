@@ -28,6 +28,7 @@ export default function Aprofile() {
 {/* <h1 className='text-center' style={{color:'white'}}>Hello User</h1> */}
 <br />
 <h1 className='text-center' style={{color:'white'}}>ADMIN</h1>
+
 <br />
 
 <div className="mainn" style={{border:'5px solid white',borderRadius:'15px',width:'750px',height:'400px',marginLeft:'400px',color:'white'}}>
