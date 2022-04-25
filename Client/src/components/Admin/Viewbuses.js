@@ -44,18 +44,18 @@ export default function Viewbuses() {
     {/* { getbuses()} */}
     <br /><br />
     
-      <table style={{border:'1px solid white',marginLeft:'10%',marginRight:'50%',width:'1200px'}}>
-        <tbody>
+      <table style={{border:'1px solid white',marginLeft:'7%',marginRight:'50%',width:'1300px'}}>
+        <tbody style={{}}>
           <tr>
-            <th className='text-center' style={{color:'gold',fontSize:'20px'}}>Bus Id</th>
-            <th className='text-center' style={{color:'gold',fontSize:'20px'}}>Bus Name</th>
-            <th className='text-center' style={{color:'gold',fontSize:'20px'}}>Bus Driver</th>
-            <th className='text-center' style={{color:'gold',fontSize:'20px'}}>From City</th>
-            <th className='text-center' style={{color:'gold',fontSize:'20px'}}>Start Time</th>
-            <th className='text-center' style={{color:'gold',fontSize:'20px'}}>To City</th>
-            <th className='text-center' style={{color:'gold',fontSize:'20px'}}>Reach Time</th>
-            <th className='text-center' style={{color:'gold',fontSize:'20px'}}>Capacity</th>
-            <th className='text-center' style={{color:'gold',fontSize:'20px'}}>Price</th>
+            <th className='text-center' style={{color:'gold',fontSize:'18px'}}>Bus Id</th>
+            <th className='text-center' style={{color:'gold',fontSize:'18px'}}>Bus Name</th>
+            <th className='text-center' style={{color:'gold',fontSize:'18px'}}>Bus Driver</th>
+            <th className='text-center' style={{color:'gold',fontSize:'18px'}}>From City</th>
+            <th className='text-center' style={{color:'gold',fontSize:'18px'}}>Start Time</th>
+            <th className='text-center' style={{color:'gold',fontSize:'18px'}}>To City</th>
+            <th className='text-center' style={{color:'gold',fontSize:'18px'}}>Reach Time</th>
+            <th className='text-center' style={{color:'gold',fontSize:'18px'}}>Capacity</th>
+            <th className='text-center' style={{color:'gold',fontSize:'18px'}}>Price</th>
             
         
             <th className='text-center' style={{color:'gold',fontSize:'20px',width:'50px'}}>Action</th>

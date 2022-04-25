@@ -85,7 +85,9 @@ export default function Bookticket() {
 	</div>
 	<br />
 	<h2 className='text-center' style={{color:'white'}}>Available Buses</h2>
-	<div className='row' >
+	<div className='flex-container'  >
+		<br />
+		
 	{
 		// <h1 style={{color:'white'}}>Ded</h1>
 	
@@ -93,8 +95,8 @@ export default function Bookticket() {
 		
 		return <>
 		<br />
-		<div class="card container col-md-4" style={{height:'330px'}}>
-			<img  className='' src="https://img.everychina.com/nimg/2c/f5/229f4cc7b31d3ff68cbdfb4bd412-300x300-0/novel_appearance_used_mini_bus_diesel_fuel_type_higer_brand_with_19_seat.jpg" style={{width:'150px',height:'150px',marginLeft:'80px'}} alt="Avatar" />
+		<div class="angry-grid shh text-center" style={{height:'300px',width:'1100px' ,border:'2px solid white',color:'white'}}>
+			{/* <img  className='' src="https://img.everychina.com/nimg/2c/f5/229f4cc7b31d3ff68cbdfb4bd412-300x300-0/novel_appearance_used_mini_bus_diesel_fuel_type_higer_brand_with_19_seat.jpg" style={{width:'150px',height:'150px',marginLeft:'80px'}} alt="Avatar" />
 			<div className=" row">
 	
 				<h3 className='text-center' style={{}}>{val.busname}</h3>
@@ -103,8 +105,26 @@ export default function Bookticket() {
 				<h4 style={{}}> To {val.tocity}</h4>
 				<br /><br /><br />
 				<button style={{width:'200px',marginLeft:'60px'}} className='btn btn-primary'>Book this Bus</button>
+			</div> */}
+			<div style={{marginTop:'100px',fontSize:'20px'}}>{val.busname}</div>
+			<div style={{marginTop:'100px',fontSize:'20px'}}>{val.fromcity}</div>
+			<div style={{marginTop:'100px',fontSize:'20px'}}>{val.tocity}</div>
+			<div style={{marginTop:'100px',fontSize:'20px'}}>₹{val.ticketprice}</div>
+			<div style={{marginTop:'100px',fontSize:'20px'}}>Hi</div>
+			<div style={{marginTop:'50px',fontSize:'20px'}}>AC</div>
+			<div style={{marginTop:'50px',fontSize:'20px'}}>{val.starttime}</div>
+			<div style={{marginTop:'50px',fontSize:'20px'}}>{val.reachtime}</div>
+			<div style={{marginTop:'50px',fontSize:'20px'}}></div>
+			<div style={{marginTop:'30px',fontSize:'20px',marginRight:'30px'}}>
+				<button className="btn btn-success" style={{boxShadow:'none'}}>View Seats</button>
 			</div>
-			</div>
+
+
+
+
+
+
+		</div>
 		
 		 
 

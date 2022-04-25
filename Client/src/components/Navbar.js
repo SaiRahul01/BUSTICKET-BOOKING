@@ -90,7 +90,7 @@ export default function Navbar() {
         </li>
 
         <li className="nav-item pe-3" style={{display:(Cookies.get("isauth")==="true" && Cookies.get("admin"))?'flex':'none',alignItems:'center'}}>
-        <img  style={{height:'28px',width:'28px'}} src="https://cdn-icons.flaticon.com/png/512/3066/premium/3066259.png?token=exp=1650434155~hmac=f5830b47d76ac4b0a90e6fe251fdf49d" alt=''/>
+        <img  style={{height:'28px',width:'28px'}} src="https://img.icons8.com/fluency/2x/bus.png" alt=''/>
           <Link className="nav-link active" to="/admin/addbus" >Add Bus</Link >
         </li>
        
@@ -105,7 +105,7 @@ export default function Navbar() {
         </li>
 
         <li className="nav-item pe-3" style={{display:(Cookies.get("isauth")==="true" && Cookies.get("admin"))?'flex':'none',alignItems:'center'}}>
-        <img  style={{height:'28px',width:'28px'}} src="https://cdn-icons.flaticon.com/png/512/1144/premium/1144709.png?token=exp=1650434366~hmac=1356f17d1cf60eeb81cc967506ac8ade" alt=''/>
+        <img  style={{height:'28px',width:'28px'}} src="https://img.icons8.com/external-becris-lineal-color-becris/2x/external-user-avatars-becris-lineal-color-becris.png" alt=''/>
           <Link className="nav-link active" to="/admin/viewusers" >View Users</Link >
         </li>
 
