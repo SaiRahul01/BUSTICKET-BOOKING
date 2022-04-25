@@ -91,7 +91,7 @@ app.post('/user/checkbuses',(req,res)=>{
     const tdate=req.body.tdate;
     const fromcity=req.body.fromcity;
     const tocity=req.body.tocity;
-    db.query("SELECT * FROM bus where fromcity=? and tocity=?",[fromcity,tocity],(err,results)=>{
+    db.query("SELECT *,seatsleft FROM bus,bus_status where fromcity=? and tocity=? and bus.busid=bus_status.bussid",[fromcity,tocity],(err,results)=>{
         if(err)
         {
             console.log(err);

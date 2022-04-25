@@ -108,9 +108,10 @@ export default function Bookticket() {
 			</div> */}
 			<div style={{marginTop:'100px',fontSize:'20px'}}>{val.busname}</div>
 			<div style={{marginTop:'100px',fontSize:'20px'}}>{val.fromcity}</div>
+			
 			<div style={{marginTop:'100px',fontSize:'20px'}}>{val.tocity}</div>
 			<div style={{marginTop:'100px',fontSize:'20px'}}>₹{val.ticketprice}</div>
-			<div style={{marginTop:'100px',fontSize:'20px'}}>Hi</div>
+			<div style={{marginTop:'100px',fontSize:'20px'}}>{val.seatsleft} seats left</div>
 			<div style={{marginTop:'50px',fontSize:'20px'}}>AC</div>
 			<div style={{marginTop:'50px',fontSize:'20px'}}>{val.starttime}</div>
 			<div style={{marginTop:'50px',fontSize:'20px'}}>{val.reachtime}</div>
