@@ -6,6 +6,7 @@ import './login.css'
 import { useEffect } from 'react'
 import Cookies from 'js-cookie'
 import ProtectedRoute from '../ProtectedRoute'
+import { toast } from 'react-toastify'
 
 
 export default function Login() {
@@ -24,13 +25,13 @@ export default function Login() {
   const handlelogin = (e) => {
     if(emaillogin==='')
     {
-        alert("Please Fill Email field!");
+        toast("Please Fill Email field!");
         e.preventDefault()
         return;
     }
     if(passwordlogin==='')
     {
-        alert("Please Fill Password field!");
+        toast("Please Fill Password field!");
         e.preventDefault()
         return;
     }
@@ -44,7 +45,7 @@ export default function Login() {
 
       if (response.data.message) {
         
-        alert("Unsuccessful")
+        toast("Unsuccessful")
       } else {
 
        
