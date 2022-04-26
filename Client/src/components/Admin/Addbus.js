@@ -116,7 +116,7 @@ export default function Addbus() {
 						<div className="fc">
 							<div class="wrap-input100 validate-input" data-validate="Name is required">
 
-								<input class="input100" type="text" onkeypress="return /[a-z]/i.test(event.key)" onChange={e => setbusname(e.target.value)} name="name" placeholder="Bus Name" required />
+								<input class="input100" type="text" onChange={e => setbusname(e.target.value)} name="name" placeholder="Bus Name" required />
 								<span class="focus-input100"></span>
 							</div>
 							<div class="wrap-input100 validate-input" data-validate="Name is required">
