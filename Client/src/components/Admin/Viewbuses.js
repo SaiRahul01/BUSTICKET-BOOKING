@@ -82,7 +82,8 @@ export default function Viewbuses() {
                 </div>
                 <div>
                   <button className='btn btn-small' style={{width:'60px',boxShadow:'none' }}    >
-                  <img style={{width:'35px',height:'40px',marginTop:'-30px'}} src="https://img.icons8.com/plasticine/100/000000/filled-trash.png" alt='/'/>
+                  <Link id={val.busid} to={`/admin/deletebus/${val.busid}`}>
+                  <img style={{width:'35px',height:'40px',marginTop:'-30px'}} src="https://img.icons8.com/plasticine/100/000000/filled-trash.png" alt='/'/></Link>
 
                   </button>
             

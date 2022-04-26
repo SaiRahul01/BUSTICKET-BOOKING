@@ -25,6 +25,7 @@ import Userprofile from './components/User/Userprofile';
 import Bookticket from './components/User/Bookticket';
 import Bookings from './components/User/Bookings';
 import Cookies from 'js-cookie';
+import Deletebus from './components/Admin/Deletebus';
 // import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -94,6 +95,9 @@ function App() {
           </Route>
 
           <Route exact path="/admin/editbus/:id" element={<Editbus />}>
+
+          </Route>
+          <Route exact path="/admin/deletebus/:id" element={<Deletebus />}>
 
           </Route>
           <Route exact path="/admin/viewusers" element={<Viewusers />}>

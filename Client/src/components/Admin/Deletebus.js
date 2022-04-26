@@ -1,7 +1,69 @@
-import React from 'react'
+import Axios from 'axios'
+import React, { useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import  Cookies  from 'js-cookie'
+import './Deletebus.css'
 
 export default function Deletebus() {
+
+    const {id}=useParams();
+
+    const handledelete=(e)=>{
+      Axios.post('http://localhost:3001/deletebus',{id:parseInt(id)}).then((response)=>{
+        if(response)
+        {
+          toast('deleted get lost')
+        }
+      })
+      e.preventDefault()
+        
+
+    }
+    const handlecancel=(e)=>{
+    
+      window.location.href="/admin/viewbuses";
+      e.preventDefault()
+    
+    }
   return (
-    <div>Deletebus</div>
+    <>
+    <div class="container-contact100">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form">
+				<span class="contact100-form-title">
+					Delete Bus {id}
+				</span>
+        <div className="flex-container">
+         
+            <div>
+            <button className="btn btn-secondary" onClick={handlecancel}>
+              Cancel
+            </button>
+
+            </div>
+            <div>
+          
+            <button className="btn btn-danger" onClick={handledelete}>
+              Delete
+            </button>
+
+            </div>
+         
+            
+          
+        </div>
+        
+
+ 
+			</form>
+		</div>
+	</div>
+
+
+
+	<div id="dropDownSelect1"></div>
+
+    </>
   )
 }

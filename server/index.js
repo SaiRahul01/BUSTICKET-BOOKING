@@ -278,6 +278,19 @@ app.post('/bus_admin',(req,res)=>{
         }
     })
 })
+app.post('/deletebus',(req,res)=>{
+    const idtodelete=req.body.id
+    db.query("DELETE FROM bus where busid=?",[idtodelete],(err,results)=>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            res.send({f:"success"})
+        }
+    })
+})
 app.post('/admin/updatebus', (req, res) => {
     const name = req.body.name
     const fstation = req.body.fstation
