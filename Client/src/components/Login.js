@@ -22,6 +22,18 @@ export default function Login() {
   // const [isLogged, setisLogged] = useState(false)
 
   const handlelogin = (e) => {
+    if(emaillogin==='')
+    {
+        alert("Please Fill Email field!");
+        e.preventDefault()
+        return;
+    }
+    if(passwordlogin==='')
+    {
+        alert("Please Fill Password field!");
+        e.preventDefault()
+        return;
+    }
 
     Axios.post('http://localhost:3001/loginuser', {
 

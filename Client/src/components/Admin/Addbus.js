@@ -1,8 +1,14 @@
 import Axios from 'axios'
 import React, { useState } from 'react'
-import { toast } from 'react-toastify'
+import { ToastContainer,toast } from 'react-toastify'
+
+
+
+import 'react-toastify/dist/ReactToastify.css'
+
 
 import './Addbus.css'
+toast.configure()
 
 export default function Addbus() {
 	const [busname, setbusname] = useState('')
@@ -15,8 +21,10 @@ export default function Addbus() {
 	const [seatprice, setseatprice] = useState('')
 
 	const handleaddbus = (e) => {
-		if (busname === '' || fromstation === '' || tostation === '' || capacity === '' || driver === '' || starttime === '' || reachtime === '') {
-			alert('Please Fill all fields')
+		if (busname === '' || fromstation === '' || tostation === '' || capacity === '' || driver === '' || starttime === '' || reachtime === '' || seatprice==='') {
+			// alert('Please Fill all fields')
+			toast('Please enter all fields')
+			e.preventDefault()
 			return
 		}
 		Axios.post('http://localhost:3001/addbus', {
@@ -32,10 +40,10 @@ export default function Addbus() {
 		}).then(
 			(response) => {
 				if (response.data.op === 'fail') {
-					alert('Failed')
+					alert('Could not add Bus!')
 				}
 				else {
-					alert('Success')
+					alert('Added Bus Successfuly!')
 				}
 
 			}
@@ -46,8 +54,8 @@ export default function Addbus() {
 
 		<>
 
-
-
+		
+		
 			<div class="container-contact100">
 				<div class="wrap-contact100">
 					<form class="contact100-form validate-form">

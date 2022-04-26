@@ -1,6 +1,7 @@
 import Axios from 'axios'
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 export default function Editbus() {
 
@@ -40,11 +41,11 @@ export default function Editbus() {
         }).then((resp)=>{
             if(resp.data.ff==='s')
             {
-                alert('Updated')
+                toast('Updated Bus successfully')
             }
             else
             {
-                alert('Not Updated')
+                toast('Bus not Updated')
             }
 
         })
