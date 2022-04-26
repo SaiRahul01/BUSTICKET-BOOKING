@@ -64,6 +64,12 @@ export default function Addbus() {
 			e.preventDefault()
 			return
 		}
+		if(!(capacity>=10 && capacity<=50))
+		{
+			toast('Capacity must be between 10 and 50')
+			e.preventDefault()
+			return
+		}
 
 
 
