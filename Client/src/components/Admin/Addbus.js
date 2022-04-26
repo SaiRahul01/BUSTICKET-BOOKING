@@ -94,8 +94,8 @@ export default function Addbus() {
 				setbussid(response.data[0].busid)
 			}
 		)
-		e.preventDefault()
-		await delay(500)
+		
+	
 		Axios.post('http://localhost:3001/bus_admin',{busid:bussid,adminemail:Cookies.get("admin")}).then((response)=>{
 			console.log(response);
 
