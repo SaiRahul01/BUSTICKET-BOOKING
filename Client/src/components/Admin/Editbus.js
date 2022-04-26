@@ -2,6 +2,7 @@ import Axios from 'axios'
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import  Cookies  from 'js-cookie'
 
 export default function Editbus() {
 
@@ -75,6 +76,20 @@ export default function Editbus() {
 
         })
         e.preventDefault()
+
+	
+
+
+
+		Axios.post('http://localhost:3001/bus_admin',{
+			adminemail:Cookies.get("admin"),
+			busid:id
+		}).then(
+			(response)=>{
+				console.log(response);
+
+			}
+		)
 
     }
   return (
