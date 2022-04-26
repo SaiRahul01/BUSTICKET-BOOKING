@@ -81,7 +81,7 @@ export default function Addbus() {
 					toast('There is already a bus with that name!')
 				}
 				else {
-					toast('Added Bus Successfuly!')
+					toast('Added Bus Successfuly !' )
 				}
 
 			}
