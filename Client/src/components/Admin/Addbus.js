@@ -34,25 +34,25 @@ export default function Addbus() {
 		}
 
 
-		if (/[^a-zA-Z]/.test(busname))
+		if (!/^[a-zA-Z\s]*$/.test(busname))
 		{
 			toast('Enter a valid Bus name!')
 			e.preventDefault()
 			return
 		}
-		if (/[^a-zA-Z]/.test(fromstation))
+		if (!/^[a-zA-Z\s]*$/.test(fromstation))
 		{
 			toast('Enter a valid source city!')
 			e.preventDefault()
 			return
 		}
-		if (/[^a-zA-Z]/.test(tostation))
+		if (!/^[a-zA-Z\s]*$/.test(tostation))
 		{
 			toast('Enter a valid destination city!')
 			e.preventDefault()
 			return
 		}
-		if (/[^a-zA-Z]/.test(driver))
+		if (!/^[a-zA-Z\s]*$/.test(driver))
 		{
 			toast('Enter a valid driver name!')
 			e.preventDefault()
