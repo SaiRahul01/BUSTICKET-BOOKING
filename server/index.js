@@ -239,35 +239,6 @@ app.get('/admin/showbuses', (req, res) => {
         }
     })
 })
-app.get('/getbusid/:busname',(req,res)=>{
-    const bn=req.params.busname
-    db.query("select * from bus where busname=?",[bn],(err,results)=>{
-        if(err)
-        {
-            console.log(err);
-        }
-        else
-        {
-            res.send(results)
-        }
-    })
-
-})
-app.post('/bus_admin',(req,res)=>{
-    const adminemail=req.body.adminemail;
-    const busid=req.body.busid;
-    db.query("insert into bus_admin values(?,?)",[busid,adminemail],(err,results)=>{
-        if(err)
-        {
-            console.log(err);
-        }
-        else
-        {
-            res.send({f:'s'})
-        }
-    })
-})
-
 app.get('/admin/showusers', (req, res) => {
     db.query("SELECT * FROM users", (err, result) => {
         if (err) {
