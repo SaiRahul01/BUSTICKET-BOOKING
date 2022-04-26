@@ -1,4 +1,5 @@
 import Axios from 'axios'
+import Cookies  from 'js-cookie'
 import React, { useState } from 'react'
 import { ToastContainer,toast } from 'react-toastify'
 
@@ -9,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 import './Addbus.css'
 toast.configure()
-
+const delay = ms => new Promise(res => setTimeout(res, ms));
 export default function Addbus() {
 	const [busname, setbusname] = useState('')
 	const [fromstation, setfromstation] = useState('')
@@ -19,8 +20,9 @@ export default function Addbus() {
 	const [starttime, setstarttime] = useState('')
 	const [reachtime, setreachtime] = useState('')
 	const [seatprice, setseatprice] = useState('')
+	const [bussid, setbussid] = useState(0)
 
-	const handleaddbus = (e) => {
+	const handleaddbus = async(e) => {
 
 
 
@@ -85,6 +87,19 @@ export default function Addbus() {
 			}
 		)
 		e.preventDefault()
+		await delay(1000)
+		Axios.post('http://localhost:3001/getbusid',{busname:busname.toLowerCase()}).then(
+			(response)=>{
+				console.log(response.data[0].busid);
+				setbussid(response.data[0].busid)
+			}
+		)
+		e.preventDefault()
+		await delay(500)
+		Axios.post('http://localhost:3001/bus_admin',{busid:bussid,adminemail:Cookies.get("admin")}).then((response)=>{
+			console.log(response);
+
+		})
 	}
 	return (
 
