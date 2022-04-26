@@ -84,11 +84,11 @@ export default function Bookticket() {
 		</div>
 	</div>
 	<br />
-	<h2 className='text-center' style={{color:'white'}}>Available Buses</h2>
-	<div className='flex-container'  >
-		<br />
+	<h2 className='text-center' style={{color:'white',display:f?'none':''}}>Available Buses</h2>
+	<div className='flex-container' style={{display:f?'none':''}}  >
+		<br style={{display:f?'none':''}}/>
 		
-	{
+	{ f===false &&
 		// <h1 style={{color:'white'}}>Ded</h1>
 	
 	availablebuses.map((val,id)=>{
