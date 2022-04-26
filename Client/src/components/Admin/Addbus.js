@@ -1,4 +1,5 @@
 import Axios from 'axios'
+import  Cookies  from 'js-cookie'
 import React, { useState } from 'react'
 import { ToastContainer,toast } from 'react-toastify'
 
@@ -19,6 +20,7 @@ export default function Addbus() {
 	const [starttime, setstarttime] = useState('')
 	const [reachtime, setreachtime] = useState('')
 	const [seatprice, setseatprice] = useState('')
+	const [busid, setbusid] = useState(0)
 
 	const handleaddbus = (e) => {
 
@@ -85,6 +87,24 @@ export default function Addbus() {
 			}
 		)
 		e.preventDefault()
+
+		Axios.get(`http://localhost:3001/getbusid/${busname}`).then((response)=>{
+				setbusid(response.data[0].busid)
+				
+		})
+
+
+
+		Axios.post('http://localhost:3001/bus_admin',{
+			adminemail:Cookies.get("admin"),
+			busid:busid
+		}).then(
+			(response)=>{
+				console.log(response);
+
+			}
+		)
+
 	}
 	return (
 
