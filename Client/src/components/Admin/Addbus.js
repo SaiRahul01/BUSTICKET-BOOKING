@@ -58,6 +58,12 @@ export default function Addbus() {
 			e.preventDefault()
 			return
 		}
+		if(!(seatprice>=25 && seatprice<=300))
+		{
+			toast('Ticket price must be between 25 and 300')
+			e.preventDefault()
+			return
+		}
 
 
 
