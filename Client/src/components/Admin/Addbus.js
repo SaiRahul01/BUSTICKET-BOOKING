@@ -21,17 +21,53 @@ export default function Addbus() {
 	const [seatprice, setseatprice] = useState('')
 
 	const handleaddbus = (e) => {
+
+
+
 		if (busname === '' || fromstation === '' || tostation === '' || capacity === '' || driver === '' || starttime === '' || reachtime === '' || seatprice==='') {
 			// alert('Please Fill all fields')
 			toast('Please enter all fields')
 			e.preventDefault()
 			return
 		}
+
+
+		if (/[^a-zA-Z]/.test(busname))
+		{
+			toast('Enter a valid Bus name!')
+			e.preventDefault()
+			return
+		}
+		if (/[^a-zA-Z]/.test(fromstation))
+		{
+			toast('Enter a valid source city!')
+			e.preventDefault()
+			return
+		}
+		if (/[^a-zA-Z]/.test(tostation))
+		{
+			toast('Enter a valid destination city!')
+			e.preventDefault()
+			return
+		}
+		if (/[^a-zA-Z]/.test(driver))
+		{
+			toast('Enter a valid driver name!')
+			e.preventDefault()
+			return
+		}
+
+
+
+
+
+
+
 		Axios.post('http://localhost:3001/addbus', {
-			busname: busname,
-			driver: driver,
-			fromstation: fromstation,
-			tostation: tostation,
+			busname: busname.toLowerCase(),
+			driver: driver.toLowerCase(),
+			fromstation: fromstation.toLowerCase(),
+			tostation: tostation.toLowerCase(),
 			capacity: capacity,
 			starttime: starttime,
 			reachtime: reachtime,
@@ -40,10 +76,10 @@ export default function Addbus() {
 		}).then(
 			(response) => {
 				if (response.data.op === 'fail') {
-					alert('Could not add Bus!')
+					toast('There is already a bus with that name!')
 				}
 				else {
-					alert('Added Bus Successfuly!')
+					toast('Added Bus Successfuly!')
 				}
 
 			}
@@ -65,7 +101,7 @@ export default function Addbus() {
 						<div className="fc">
 							<div class="wrap-input100 validate-input" data-validate="Name is required">
 
-								<input class="input100" type="text" onChange={e => setbusname(e.target.value)} name="name" placeholder="Bus Name" required />
+								<input class="input100" type="text" onkeypress="return /[a-z]/i.test(event.key)" onChange={e => setbusname(e.target.value)} name="name" placeholder="Bus Name" required />
 								<span class="focus-input100"></span>
 							</div>
 							<div class="wrap-input100 validate-input" data-validate="Name is required">

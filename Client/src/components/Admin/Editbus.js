@@ -25,14 +25,39 @@ export default function Editbus() {
 			alert('Please Fill all fields')
 			return
 		}
+		if (/[^a-zA-Z]/.test(newbusname))
+		{
+			toast('Enter a valid Bus name!')
+			e.preventDefault()
+			return
+		}
+		if (/[^a-zA-Z]/.test(newfromstation))
+		{
+			toast('Enter a valid source city!')
+			e.preventDefault()
+			return
+		}
+		if (/[^a-zA-Z]/.test(newtostation))
+		{
+			toast('Enter a valid destination city!')
+			e.preventDefault()
+			return
+		}
+		if (/[^a-zA-Z]/.test(newbusdriver))
+		{
+			toast('Enter a valid driver name!')
+			e.preventDefault()
+			return
+		}
+
     
         Axios.post('http://localhost:3001/admin/updatebus',{
           id:parseInt(id),
-            name:newbusname,
-            fstation:newfromstation,
-            tstation:newtostation,
+            name:newbusname.toLowerCase(),
+            fstation:newfromstation.toLowerCase(),
+            tstation:newtostation.toLowerCase(),
             cap:newcapacity,
-            busdriver:newbusdriver,
+            busdriver:newbusdriver.toLowerCase(),
             starttime:starttime,
             reachtime:reachtime,
             ticketprice:ticketprice
