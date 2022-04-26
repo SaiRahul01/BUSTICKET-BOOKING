@@ -13,7 +13,7 @@ export default function Deletebus() {
       Axios.post('http://localhost:3001/deletebus',{id:parseInt(id)}).then((response)=>{
         if(response)
         {
-          toast('deleted get lost')
+          toast('Deleted Successfully')
         }
       })
       e.preventDefault()
