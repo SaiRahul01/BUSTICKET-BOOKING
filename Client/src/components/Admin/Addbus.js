@@ -70,6 +70,7 @@ export default function Addbus() {
 			e.preventDefault()
 			return
 		}
+		
 
 
 
@@ -90,7 +91,7 @@ export default function Addbus() {
 		}).then(
 			(response) => {
 				if (response.data.op === 'fail') {
-					toast('There is already a bus with that name!')
+					toast('Something went wrong!')
 				}
 				else {
 					toast('Added Bus Successfuly!')
