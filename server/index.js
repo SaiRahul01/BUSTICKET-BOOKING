@@ -106,6 +106,38 @@ app.post('/user/checkbuses',(req,res)=>{
     })
 })
 
+app.post('/user/decreaseseats',(req,res)=>{
+    const busid=req.body.busid;
+    const tdate=req.body.tdate;
+    const noofseats=req.body.noofseats;
+    db.query("UPDATE bus_status set seatsleft=seatsleft-? where bussid=? and tdate=?",[noofseats,busid,tdate],(err,results)=>{
+        if(err)
+        
+        {
+            console.log(err);
+        }
+        else
+        {
+            res.send(results);
+        }
+    })
+})
+
+app.post('/user/getleftseats',(req,res)=>{
+    const busid=req.body.busid;
+    const tdate=req.body.tdate;
+    db.query("SELECT * FROM bus_status where bussid=? and tdate=?",[busid,tdate],(err,results)=>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            res.send(results)
+        }
+    })
+})
+
 app.post('/user/confirmticket',(req,res)=>{
     const busid=req.body.busid;
     const totalcost=req.body.totalcost;

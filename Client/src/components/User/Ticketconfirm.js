@@ -8,22 +8,32 @@ import Axios from 'axios'
 
 export default function Ticketconfirm() {
     const [noofseats, setnoofseats] = useState(1)
-    const [totalcost, settotalcost] = useState(0)
     const { busid, busname, fromcity, tocity, ticketprice, seatsleft, starttime, reachtime,tdate } = useParams();
+    const [totalcost, settotalcost] = useState(ticketprice)
+    const [seattsleft, settseatsleft] = useState(0)
+    let [f, setf] = useState(0)
     
+    useEffect(() => {
+      Axios.post('http://localhost:3001/user/getleftseats',{tdate:tdate,busid:busid}).then((reponse)=>{
+          console.log(reponse);
+          settseatsleft(reponse.data[0].seatsleft)
+      })
+    }, [f,busid,tdate])
     
 
     useEffect(() => {
         setnoofseats(noofseats)
       settotalcost(noofseats*ticketprice)
     
+    
       
-    }, [noofseats])
+    }, [noofseats,ticketprice])
     
     const checkpayment=(e)=>{
+        f=1-f;
         if(noofseats>seatsleft)
         {
-            toast('You cannot choose more seats than available')
+            toast('You cannot choose more seats than available'+seatsleft+"chosen: "+noofseats)
             return
         }
         e.preventDefault();
@@ -41,6 +51,14 @@ export default function Ticketconfirm() {
                     console.log(response);
             }
         )
+        Axios.post('http://localhost:3001/user/decreaseseats',{
+            busid:busid,
+            tdate:tdate,
+            noofseats:noofseats
+        }).then((response)=>{
+                console.log(response);
+
+        })
 
 
 
@@ -74,7 +92,7 @@ export default function Ticketconfirm() {
             </div>
             <div className="parent2">
             <h2  style={{fontSize:'25px', color: 'white',padding:'25px' }}>₹{ticketprice} per seat</h2>
-            <h2 style={{fontSize:'25px', color: 'white',padding:'25px' }}>{seatsleft} seats  left</h2>
+            <h2 style={{fontSize:'25px', color: 'white',padding:'25px' }}>{seattsleft} seats  left</h2>
             {/* <input style={{width:'200px',height:'50px',marginLeft:'20px'}}></input> */}
             <div>
             <label style={{color:'white',fontSize:'25px'}} for="cars">Number of Tickets</label>
