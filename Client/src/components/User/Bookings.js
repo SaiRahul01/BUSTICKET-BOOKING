@@ -2,6 +2,7 @@ import React from 'react'
 import { useState ,useEffect} from 'react'
 import Axios from 'axios'
 import Cookies from 'js-cookie'
+import './Bookings.css'
 
 
 export default function Bookings() {
@@ -51,12 +52,13 @@ export default function Bookings() {
 			
 			<div style={{marginTop:'100px',fontSize:'20px'}}>To {val.tocity}</div>
 			<div style={{marginTop:'100px',fontSize:'20px'}}>Cost ₹{val.price}</div>
-			<div style={{marginTop:'100px',fontSize:'20px'}}></div>
+			<div style={{marginTop:'100px',fontSize:'20px'}}>{val.noofseats}</div>
 			<div style={{marginTop:'50px',fontSize:'20px'}}>AC</div>
 			<div style={{marginTop:'50px',fontSize:'20px'}}>{val.starttime}</div>
 			<div style={{marginTop:'50px',fontSize:'20px'}}>{val.reachtime}</div>
 			<div style={{marginTop:'50px',fontSize:'20px'}}>ID: {val.busid}</div>
       <div style={{marginTop:'50px',fontSize:'20px'}}>Date {val.dateofjrny.substring(0,10)}</div>
+      
 			
     
 		
