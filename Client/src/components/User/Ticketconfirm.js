@@ -2,6 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useState,useEffect } from 'react';
 import './Ticketconfirm.css'
+import { toast } from 'react-toastify';
 
 
 export default function Ticketconfirm() {
@@ -17,6 +18,15 @@ export default function Ticketconfirm() {
       
     }, [noofseats])
     
+    const checkpayment=(e)=>{
+        if(noofseats>seatsleft)
+        {
+            toast('You cannot choose more seats than available')
+            return
+        }
+        e.preventDefault();
+        
+    }
 
     const { busid, busname, fromcity, tocity, ticketprice, seatsleft, starttime, reachtime } = useParams();
     return (
@@ -54,12 +64,12 @@ export default function Ticketconfirm() {
                 <option  value="2">2</option>
                 <option  value="3">3</option>
                 <option  value="4">4</option>
-                <option   value="4">5</option>
-                <option  value="4">6</option>
+                <option   value="5">5</option>
+                <option  value="6">6</option>
             </select>
             </div>
             <div style={{padding:'25px',paddingBottom:'50px'}}>
-            <button style={{boxShadow:'none'}} className="btn btn-success">Pay ₹{totalcost} </button>
+            <button style={{boxShadow:'none'}} onClick={checkpayment} className="btn btn-success">Pay ₹{totalcost} </button>
             </div>
             </div>
             </div>
