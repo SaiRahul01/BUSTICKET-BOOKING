@@ -102,7 +102,7 @@ function App() {
 
           </Route>
 
-          <Route exact path="/user/bookticket/:busid/:busname/:fromcity/:tocity/:ticketprice/:seatsleft/:starttime/:reachtime" element={<Ticketconfirm />}>
+          <Route exact path="/user/bookticket/:busid/:busname/:fromcity/:tocity/:ticketprice/:seatsleft/:starttime/:reachtime/:tdate" element={<Ticketconfirm />}>
 
           </Route>
 

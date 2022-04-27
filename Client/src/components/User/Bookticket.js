@@ -109,7 +109,7 @@ export default function Bookticket() {
 			<div style={{marginTop:'50px',fontSize:'20px'}}>{val.reachtime}</div>
 			<div style={{marginTop:'50px',fontSize:'20px'}}>ID: {val.busid}</div>
 			<div style={{marginTop:'30px',fontSize:'20px',marginRight:'30px'}}>
-				<Link to={`/user/bookticket/${val.busid}/${val.busname}/${val.fromcity}/${val.tocity}/${val.ticketprice}/${val.seatsleft}/${val.starttime}/${val.reachtime}`}>
+				<Link to={`/user/bookticket/${val.busid}/${val.busname}/${val.fromcity}/${val.tocity}/${val.ticketprice}/${val.seatsleft}/${val.starttime}/${val.reachtime}/${tdate}`}>
 				<button className="btn btn-success" style={{boxShadow:'none'}}>Book Seats</button>
 				</Link>
 			</div>

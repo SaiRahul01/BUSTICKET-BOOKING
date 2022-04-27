@@ -3,11 +3,13 @@ import { useParams } from 'react-router-dom'
 import { useState,useEffect } from 'react';
 import './Ticketconfirm.css'
 import { toast } from 'react-toastify';
+import Axios from 'axios'
 
 
 export default function Ticketconfirm() {
     const [noofseats, setnoofseats] = useState(1)
     const [totalcost, settotalcost] = useState(0)
+    const { busid, busname, fromcity, tocity, ticketprice, seatsleft, starttime, reachtime,tdate } = useParams();
     
     
 
@@ -25,10 +27,27 @@ export default function Ticketconfirm() {
             return
         }
         e.preventDefault();
+        Axios.post('http://localhost:3001/user/confirmticket',{
+            busid:busid,
+            totalcost:totalcost,
+            noofseats:noofseats,
+            tdate:tdate
+
+
+
+        }).then(
+            (response)=>{
+                toast('Booked successfully!')
+                    console.log(response);
+            }
+        )
+
+
+
         
     }
 
-    const { busid, busname, fromcity, tocity, ticketprice, seatsleft, starttime, reachtime } = useParams();
+   
     return (
         <>
         <br /><br />
@@ -54,12 +73,12 @@ export default function Ticketconfirm() {
 
             </div>
             <div className="parent2">
-            <h2  style={{fontSize:'25px', color: 'white',padding:'25px' }}>{ticketprice} per seat</h2>
+            <h2  style={{fontSize:'25px', color: 'white',padding:'25px' }}>₹{ticketprice} per seat</h2>
             <h2 style={{fontSize:'25px', color: 'white',padding:'25px' }}>{seatsleft} seats  left</h2>
             {/* <input style={{width:'200px',height:'50px',marginLeft:'20px'}}></input> */}
             <div>
             <label style={{color:'white',fontSize:'25px'}} for="cars">Number of Tickets</label>
-            <select onChange={e=>setnoofseats(e.target.value)}  style={{width:'80px',height:'50px',marginLeft:'20px'}}  name="cars" id="cars">  
+            <select onChange={e=>setnoofseats(e.target.value)}  style={{width:'80px',height:'30px',marginLeft:'20px'}}  name="cars" id="cars">  
                 <option   value = "1">1</option>
                 <option  value="2">2</option>
                 <option  value="3">3</option>
@@ -68,10 +87,19 @@ export default function Ticketconfirm() {
                 <option  value="6">6</option>
             </select>
             </div>
+            <div style={{fontSize:'20px',color:'white'}}>
+                Date of Journey {tdate}
+
+            </div>
+            
+            </div>
             <div style={{padding:'25px',paddingBottom:'50px'}}>
-            <button style={{boxShadow:'none'}} onClick={checkpayment} className="btn btn-success">Pay ₹{totalcost} </button>
+            <button style={{boxShadow:'none',width:'20em'}} onClick={checkpayment} className="btn btn-success">Pay ₹{totalcost} </button>
             </div>
-            </div>
+
+
+
+
             </div>
         </>
 

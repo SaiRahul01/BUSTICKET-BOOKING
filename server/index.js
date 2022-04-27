@@ -106,6 +106,24 @@ app.post('/user/checkbuses',(req,res)=>{
     })
 })
 
+app.post('/user/confirmticket',(req,res)=>{
+    const busid=req.body.busid;
+    const totalcost=req.body.totalcost;
+    const noofseats=req.body.noofseats;
+    const tdate=req.body.tdate;
+    db.query("INSERT INTO ticket(dateofjrny,price,noofseats,bus_id,user_id) values(?,?,?,?,?)",[tdate,totalcost,noofseats,busid,3],(err,results)=>{
+        if(err)
+
+        {
+            console.log(err);
+        }
+        else
+        {
+            res.send({f:"s"})
+        }
+    })
+})
+
 app.post('/loginuser', (req, res) => {
     const bemail = req.body.username
     const bpassword = req.body.password
