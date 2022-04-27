@@ -21,6 +21,7 @@ export default function Navbar() {
     }
     Cookies.remove("user");
     Cookies.remove("admin")
+    Cookies.remove("userid")
     
     window.location.href="/";
    

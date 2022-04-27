@@ -143,7 +143,8 @@ app.post('/user/confirmticket',(req,res)=>{
     const totalcost=req.body.totalcost;
     const noofseats=req.body.noofseats;
     const tdate=req.body.tdate;
-    db.query("INSERT INTO ticket(dateofjrny,price,noofseats,bus_id,user_id) values(?,?,?,?,?)",[tdate,totalcost,noofseats,busid,3],(err,results)=>{
+    const ue=req.body.uid
+    db.query("INSERT INTO ticket(dateofjrny,price,noofseats,bus_id,user_id) values(?,?,?,?,?)",[tdate,totalcost,noofseats,busid,ue],(err,results)=>{
         if(err)
 
         {
@@ -227,6 +228,20 @@ app.post('/getadmindetails',(req,res)=>{
         else
         {
             console.log(result);
+            res.send(result)
+        }
+    })
+})
+app.post("/getbookings",(req,res)=>{
+    
+    const useremail=req.body.useremail;
+    db.query("SELECT * FROM ticket,users,bus where bus.busid=ticket.bus_id and  users.id=ticket.user_id and  email=?",[useremail],(err,result)=>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
             res.send(result)
         }
     })

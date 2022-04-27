@@ -4,6 +4,7 @@ import { useState,useEffect } from 'react';
 import './Ticketconfirm.css'
 import { toast } from 'react-toastify';
 import Axios from 'axios'
+import Cookies from 'js-cookie';
 
 
 export default function Ticketconfirm() {
@@ -41,7 +42,8 @@ export default function Ticketconfirm() {
             busid:busid,
             totalcost:totalcost,
             noofseats:noofseats,
-            tdate:tdate
+            tdate:tdate,
+            uid:Cookies.get("userid")
 
 
 

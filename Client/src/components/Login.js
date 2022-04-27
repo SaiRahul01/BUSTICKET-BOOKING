@@ -11,6 +11,18 @@ import { toast } from 'react-toastify'
 
 export default function Login() {
 
+
+  useEffect(() => {
+    Axios.post('http://localhost:3001/getuserdetails',{useremail:Cookies.get("user")}).then(
+      (response)=>{
+        console.log("Should be here");
+        console.log(response.data);
+        Cookies.set("userid",response.data[0])
+        
+      }
+    )
+  }, [])
+  
  
 
 
@@ -62,6 +74,8 @@ export default function Login() {
     }
     )
     e.preventDefault();
+
+    
 
 
   }

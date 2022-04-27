@@ -14,8 +14,9 @@ export default function Userprofile() {
       
     }).then((response)=>{
           setuserdetails(response.data[0])
+          Cookies.set("userid",userdetails.id)
     })
-  }, [])
+  }, [userdetails.id])
   
   return (
     <>
