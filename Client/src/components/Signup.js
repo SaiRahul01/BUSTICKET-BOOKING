@@ -67,6 +67,12 @@ export default function Signup() {
             return;
         }
 
+        if(age<18)
+        {
+            toast('Minors are not allowed to register');
+            return;
+        }
+
 
 
         Axios.post('http://localhost:3001/registeruser', {

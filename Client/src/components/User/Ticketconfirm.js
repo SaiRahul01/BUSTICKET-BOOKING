@@ -6,6 +6,19 @@ import { toast } from 'react-toastify';
 import Axios from 'axios'
 import Cookies from 'js-cookie';
 
+function loadScript(src) {
+	return new Promise((resolve) => {
+		const script = document.createElement('script')
+		script.src = src
+		script.onload = () => {
+			resolve(true)
+		}
+		script.onerror = () => {
+			resolve(false)
+		}
+		document.body.appendChild(script)
+	})
+}
 
 export default function Ticketconfirm() {
     const [noofseats, setnoofseats] = useState(1)
@@ -19,7 +32,20 @@ export default function Ticketconfirm() {
           console.log(reponse);
           settseatsleft(reponse.data[0].seatsleft)
       })
-    }, [f,busid,tdate])
+    }, [busid,tdate])
+
+
+    
+
+    useEffect(() => {
+        setTimeout(() => {
+            Axios.post('http://localhost:3001/user/getleftseats',{tdate:tdate,busid:busid}).then((reponse)=>{
+                console.log(reponse);
+                settseatsleft(reponse.data[0].seatsleft)
+            })
+        }, 100);
+      });
+    
     
 
     useEffect(() => {
@@ -31,13 +57,18 @@ export default function Ticketconfirm() {
     }, [noofseats,ticketprice])
     
     const checkpayment=(e)=>{
-        f=1-f;
-        if(noofseats>seatsleft)
+        setf(1-f)
+        if(parseInt(seatsleft)<0)
         {
-            toast('You cannot choose more seats than available'+seatsleft+"chosen: "+noofseats)
+            toast('Insufficient seats');
             return
         }
-        e.preventDefault();
+        if(parseInt(noofseats)>parseInt(seatsleft) )
+        {
+            toast('Insufficient Seats are left')
+            return
+        }
+        // e.preventDefault();
         Axios.post('http://localhost:3001/user/confirmticket',{
             busid:busid,
             totalcost:totalcost,
@@ -50,6 +81,7 @@ export default function Ticketconfirm() {
         }).then(
             (response)=>{
                 toast('Booked successfully!')
+                window.location.href="/user/bookings"
                     console.log(response);
             }
         )
@@ -61,6 +93,8 @@ export default function Ticketconfirm() {
                 console.log(response);
 
         })
+
+        
 
 
 

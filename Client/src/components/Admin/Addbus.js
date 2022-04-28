@@ -21,6 +21,7 @@ export default function Addbus() {
 	const [reachtime, setreachtime] = useState('')
 	const [seatprice, setseatprice] = useState('')
 	const [bussid, setbussid] = useState(0)
+	const [type, settype] = useState("AC")
 
 	const handleaddbus = async(e) => {
 
@@ -86,7 +87,8 @@ export default function Addbus() {
 			capacity: capacity,
 			starttime: starttime,
 			reachtime: reachtime,
-			ticketprice:seatprice
+			ticketprice:seatprice,
+			type:type
 			
 		}).then(
 			(response) => {
@@ -113,6 +115,47 @@ export default function Addbus() {
 			console.log(response);
 
 		})
+	
+		// var now = new Date();
+		// var daysOfYear = [];
+		// for (var x=1;x<=14;x++) {
+		// 	var ded=new Date(Date.now()+x*24*60*60*1000)
+		// 	var tt=ded.toString()
+		// 	var a=tt.substring(4,7)
+		// 	var b=tt.substring(8,10)
+		// 	var c=tt.substring(11,15)
+		// 	var temp1=b.concat("-",a);
+		// 	var temp2=temp1.concat("-",c)
+		// 	var abc;
+		// 	if(a==="Apr")
+		// 	{
+		// 		abc=c+"-"+"04"+"-"+b
+		// 	}
+		// 	if(a==="May")
+		// 	{
+		// 		abc=c+"-"+"05"+"-"+b
+		// 	}
+		// 	if(a==="Jun")
+		// 	{
+		// 		abc=c+"-"+"06"+"-"+b
+		// 	}
+			
+		// 	console.log(abc);
+		// 	Axios.post('http://localhost:3001/addbusstatus',{
+		// 	busid:bussid,
+		// 	capacity:capacity,
+		// 	datt:Date.parse(abc)
+
+		// 		}).then((response)=>{
+		// 			console.log(response);
+					
+		// 		})
+
+		// }
+
+		
+
+
 	}
 	return (
 
@@ -174,14 +217,24 @@ export default function Addbus() {
 								<span class="focus-input100"></span>
 							</div>
 						</div>
-
-
-
-
-
-
+						<div className="fcc">
+							<div class="wrap-input100 validate-input" style={{width:'250px'}} data-validate="Valid email is required: ex@abc.xyz">
+							{/* <label for="cars">Type </label> */}
+								<select onChange={e=>settype(e.target.value)} style={{width:'250px',height:'40px'}}>
+									<option value="AC">AC</option>
+									<option value="NON-AC">NON AC</option>
+								</select>
+							</div>
+							
+						</div>
 
 						<button className='btn btn-outline-success ' onClick={handleaddbus} type="submit">Add</button>
+
+
+
+
+
+					
 					</form>
 				</div>
 			</div>

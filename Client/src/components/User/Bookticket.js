@@ -84,7 +84,7 @@ export default function Bookticket() {
 		</div>
 	</div>
 	<br />
-	<h2 className='text-center' style={{color:'white',display:f?'none':''}}>Available Buses</h2>
+	<h2 className='text-center' style={{color:'white',display:f?'none':''}}>{availablebuses.length>0?'Available Buses':'No Buses available'}</h2>
 	<div className='flex-container' style={{display:f?'none':'flex'}}  >
 		<br style={{display:f?'none':''}}/>
 		<br />

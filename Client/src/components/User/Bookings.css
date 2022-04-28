@@ -7,3 +7,12 @@
 	gap: 0px;
 	height: 100%;
   }
+  .angry-grid1{
+	display: grid; 
+
+	grid-template-rows: 1fr ;
+	grid-template-columns: 1fr 1fr ;
+	
+	gap: 0px;
+	height: 100%;
+  }

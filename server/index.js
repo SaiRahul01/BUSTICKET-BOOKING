@@ -4,8 +4,11 @@ const bp = require('body-parser')
 const cors = require('cors')
 const session = require('express-session')
 const cp = require('cookie-parser')
-
+const path = require('path')
+const shortid = require('shortid')
+const Razorpay = require('razorpay')
 const { toast } = require('react-toastify')
+
 const app = exp()
 app.use(cors({
     origin: ["http://localhost:3000"],
@@ -21,6 +24,11 @@ app.use(bp.urlencoded({
     extended: true
 }));
 app.use(bp.json())
+
+const razorpay = new Razorpay({
+	key_id: 'rzp_test_X0nS2mGRlwEDeC',
+	key_secret: 'VbWTa1TshzzabQLnaVxRX1Lr'
+})
 
 app.use(session({
     // secret:'key that signs',
@@ -91,7 +99,7 @@ app.post('/user/checkbuses',(req,res)=>{
     const tdate=req.body.tdate;
     const fromcity=req.body.fromcity;
     const tocity=req.body.tocity;
-    db.query("SELECT *,seatsleft FROM bus,bus_status where fromcity=? and tocity=? and bus.busid=bus_status.bussid and bus_status.tdate=?",[fromcity,tocity,tdate],(err,results)=>{
+    db.query("SELECT *,seatsleft FROM bus,bus_status where fromcity=? and tocity=? and bus.busid=bus_status.bussid and bus_status.tdate=? and bus_status.seatsleft>0",[fromcity,tocity,tdate],(err,results)=>{
         if(err)
         {
             console.log(err);
@@ -266,7 +274,8 @@ app.post('/addbus', (req, res) => {
     const starttime=req.body.starttime
     const reachtime=req.body.reachtime
     const ticketprice=req.body.ticketprice
-    db.query("INSERT INTO bus(busname,capacity,fromcity,tocity,busdriver,starttime,reachtime,ticketprice) VALUES(?,?,?,?,?,?,?,?)", [busname, capacity, fromstation, tostation, driver,starttime,reachtime,ticketprice], (err, result) => {
+    const type=req.body.type
+    db.query("INSERT INTO bus(busname,capacity,fromcity,tocity,busdriver,starttime,reachtime,ticketprice,type) VALUES(?,?,?,?,?,?,?,?,?)", [busname, capacity, fromstation, tostation, driver,starttime,reachtime,ticketprice,type], (err, result) => {
         if (err) {
             console.log(err);
             res.send({ op: 'fail' })
@@ -304,6 +313,27 @@ app.get('/admin/showbuses', (req, res) => {
         }
     })
 })
+
+// app.post('/addbusstatus',(req,res)=>{
+//     const busid=req.body.busid;
+//     const capacity=req.body.capacity;
+//     const datee=req.body.datt;
+//     console.log("Date at Backend: "+datee);
+//     db.query("INSERT INTO bus_status(tdate,seatsleft,bussid) values(?,?,?)",[datee,capacity,busid],(err,results)=>{
+//         if(err)
+//         {
+//             console.log(err);
+//             console.log("Date fetched: "+datee);
+//         }
+//         else
+//         {
+//             res.send(results);
+//         }
+//     })
+// })
+
+
+
 app.get('/admin/showusers', (req, res) => {
     db.query("SELECT * FROM users", (err, result) => {
         if (err) {
@@ -376,6 +406,35 @@ app.post('/admin/updatebus', (req, res) => {
     })
 })
 
+app.post('/razorpay', async (req, res) => {
+	const payment_capture = 1
+	const amount = req.body.totalcost
+    console.log("amount"+amount);
+	const currency = 'INR'
+
+	const options = {
+		amount: amount * 100,
+		currency,
+		receipt: shortid.generate(),
+		payment_capture
+	}
+
+	try {
+		const response = await razorpay.orders.create(options)
+		console.log(response)
+		res.json({
+			id: response.id,
+			currency: response.currency,
+			amount: response.amount
+		})
+	} catch (error) {
+		console.log(error)
+	}
+})
+
+app.get('/logo.svg', (req, res) => {
+	res.sendFile(path.join(__dirname, 'logo.svg'))
+})
 
 app.listen(3001, () => {
     console.log("Server is Running !");
