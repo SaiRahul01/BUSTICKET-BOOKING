@@ -50,6 +50,32 @@ export default function Editbus() {
 			e.preventDefault()
 			return
 		}
+		if(!(ticketprice>=25 && ticketprice<=300))
+		{
+			toast('Ticket price must be between 25 and 300')
+			e.preventDefault()
+			return
+		}
+		if(!(newcapacity>=10 && newcapacity<=50))
+		{
+			toast('Capacity must be between 10 and 50')
+			e.preventDefault()
+			return
+		}
+		if(starttime===reachtime)
+		{
+			toast('Start Time and Reach time cannot be the Same')
+			e.preventDefault()
+			return
+		}
+
+		if(newfromstation===newtostation)
+		{
+			toast("Source and Destination cannot be the Same!");
+			e.preventDefault()
+			return;
+		}
+		
 
     
         Axios.post('http://localhost:3001/admin/updatebus',{

@@ -75,6 +75,41 @@ body {
   font-size: 14px;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+h5 {
+  font-size: 15px;
+}
+
+h6 {
+  font-size: 13px;
+}
+
+.bg-blue {
+  background: #2c6ed5;
+}
+
+.bg-red {
+  background: #fa4251;
+}
 
 
 .wrapper {
@@ -208,9 +243,45 @@ input {
   cursor: pointer;
 }
 
+.input-group {
+  position: relative;
+  margin-bottom: 33px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
 
+.input--style-3 {
+  padding: 5px 0;
+  font-size: 16px;
+  color: #ccc;
+  background: transparent;
+}
 
+.input--style-3::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  color: #ccc;
+}
 
+.input--style-3:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #ccc;
+  opacity: 1;
+}
+
+.input--style-3::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #ccc;
+  opacity: 1;
+}
+
+.input--style-3:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #ccc;
+}
+
+.input--style-3:-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #ccc;
+}
 
 .select--no-search .select2-search {
   display: none !important;

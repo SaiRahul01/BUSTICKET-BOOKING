@@ -203,9 +203,12 @@ export default function Ticketconfirm() {
             {/* <div style={{padding:'25px',paddingBottom:'50px'}}>
             <h2 style={{boxShadow:'none',width:'20em'}}  className="btn btn-success">Pay ₹{totalcost} </h2>
             </div> */}
-            <h2 className="text-center" style={{color:'white'}}>Total Cost - ₹{totalcost}</h2><br />
-            <StripeCheckout
-                className="center container paybtn" style={{width:'200px',}}
+            {/* <h1 style={{color:'white'}}>{noofseats}</h1>
+            <h1 style={{color:'white'}}>{seatsleft}</h1> */}
+            <h2 className="text-center" style={{display:parseInt(noofseats)  > parseInt(seatsleft)?'none':'',color:'white'}}>Total Cost - ₹{totalcost}</h2><br />
+            <h2 style={{color:'white'}}>{parseInt(noofseats)  > parseInt(seatsleft)?'You cannot book that many seats':''}</h2>
+            <StripeCheckout 
+                className="center container paybtn" style={{ display:parseInt(noofseats)  > parseInt(seatsleft)?'none':''  ,width:'200px'}}
                 stripeKey="pk_test_51KtZSVSE0gT3DMfQUeFvFPMNQkhOsPDcl0EYVid4fPdQM5VPROY6MGIGx2uNsVmuRYB0xJGFvlF2wLocHikbjdQT00VoPOqUKY"
                 token={handleToken}
                 amount={totalcost * 100}
@@ -217,6 +220,7 @@ export default function Ticketconfirm() {
                 description='lmao'
                 shippingAddress
             />
+            <br /><br />
 
 
 
