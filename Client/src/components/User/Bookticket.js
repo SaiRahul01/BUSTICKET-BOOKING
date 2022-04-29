@@ -51,6 +51,7 @@ export default function Bookticket() {
 		//    else
 		   
 		setavailablebuses(response.data);
+		
 		  setf(false) 
 		console.log(response.data);
 
