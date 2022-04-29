@@ -1,5 +1,5 @@
 import Axios from 'axios'
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 // eslint-disable-next-line no-unused-vars
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -8,6 +8,16 @@ import './main.css'
 
 
 export default function Signup() {
+    const [maxuser, setmaxuser] = useState('')
+    useEffect(() => {
+        setTimeout(() => {
+            Axios.get('http://localhost:3001/getmaxuserr').then((response)=>{
+              //   setmaxi(response.data[0])
+                setmaxuser(response.data[0].f);
+                    console.log("lmao only"+maxuser);
+            })
+        }, 500);
+      }, )
 
     const [name, setname] = useState('')
     const [email, setemail] = useState('')
@@ -15,6 +25,7 @@ export default function Signup() {
     const [mobilenumber, setmobilenumber] = useState('')
     const [age, setage] = useState(0)
     const [city, setcity] = useState('')
+    
   
     const [streetname, setstreetname] = useState('')
     const [houseno, sethouseno] = useState(0)
@@ -32,6 +43,7 @@ export default function Signup() {
             x.type = 'password';
         }
     }
+    
 
 
 
@@ -82,6 +94,7 @@ export default function Signup() {
             mobilenumber: mobilenumber,
             age: age,
             city: city,
+            maxuser:maxuser ,
         
             houseno: houseno,
             streetname: streetname,

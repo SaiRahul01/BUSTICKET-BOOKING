@@ -9,7 +9,8 @@ const shortid = require('shortid')
 const Razorpay = require('razorpay')
 const { toast } = require('react-toastify')
 const stripe=require("stripe")("sk_test_51KtZSVSE0gT3DMfQuv9tIKcxlJ2S6eqx5NCWaMkaN9fRGLnxEK4uG0k08tlzplOwyGXkWxtAYwOFfWyo6oD3VvGU00cfeQoiLl")
-
+const bcrypt = require('bcrypt')
+const saltRounds = 10
 const app = exp()
 app.use(cors({
     origin: ["http://localhost:3000"],
@@ -66,6 +67,7 @@ app.post('/registeruser', (req, res) => {
     const bmobilenumber = req.body.mobilenumber
     const bage = req.body.age
     const bcity = req.body.city
+    const maxuser=req.body.maxuser+1
 
     const bstreetname = req.body.streetname
     const bhouseno = req.body.houseno
@@ -73,11 +75,12 @@ app.post('/registeruser', (req, res) => {
 
 
 
+   bcrypt.hash(bpassword,saltRounds, (err, hash) => {
 
-
-
-
-    db.query("INSERT INTO users(name,email,password,mobilenumber,houseno,age,streetname,city,gender) VALUES(?,?,?,?,?,?,?,?,? )", [bname, bemail, bpassword, bmobilenumber, bhouseno, bage, bstreetname, bcity, bgender], (err, results) => {
+    if (err) {
+        console.log(err)
+    }
+    db.query("INSERT INTO users(id,name,email,password,mobilenumber,houseno,age,streetname,city,gender) VALUES(?,?,?,?,?,?,?,?,?,? )", [maxuser,bname, bemail, hash, bmobilenumber, bhouseno, bage, bstreetname, bcity, bgender], (err, results) => {
         if (err) {
             console.log(err);
             res.send({ op: 'ded' })
@@ -94,6 +97,12 @@ app.post('/registeruser', (req, res) => {
 
 
     })
+
+   })
+
+
+
+    
 
 })
 app.post('/user/checkbuses',(req,res)=>{
@@ -170,23 +179,44 @@ app.post('/loginuser', (req, res) => {
     const bemail = req.body.username
     const bpassword = req.body.password
 
-    db.query("SELECT email,password FROM users WHERE email = ? AND password = ?", [bemail, bpassword],
+    db.query("SELECT email,password FROM users WHERE email = ? ", bemail,
         (err, result) => {
             if (err) {
                 res.send({ err: err });
             }
 
             if (result.length > 0) {
-                req.session.user = result
-                console.log(req.session.user);
-                res.send(result);
+                bcrypt.compare(bpassword, result[0].password, (error, response) => {
+                    if (response) {
+                        res.send(result);
+                        req.session.user = result
+                        console.log(req.session.user);
+                    } else {
+                        res.send ({message: "Wrong username/password combination"})
+                    }
+                })
+                
+                // res.send(result);
+
             } else {
-                res.send({ message: "Wrong username/password combination" });
+                res.send({ message: "User doesn't exist" });
             }
 
         }
 
     )
+})
+app.get('/getmaxuserr',(req,res)=>{
+    db.query("SELECT MAX(id) as f from users",(err,results)=>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            res.send(results)
+        }
+    })
 })
 
 app.post('/loginadmin', (req, res) => {
