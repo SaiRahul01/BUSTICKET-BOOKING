@@ -80,35 +80,66 @@ useEffect(() => {
    
 
 			<div className='mini' style={{marginTop:'80px',fontSize:'20px'}}>
-        <div style={{fontSize:'15px'}}>BusName</div>
+        <div style={{fontSize:'15px',color:'gold'}}>BusName</div>
         <div>{val.busname}</div>
         
         </div>
 			
 			<div className='mini' style={{marginTop:'80px',fontSize:'20px'}}>
-      <div style={{fontSize:'15px'}}> From</div>
+      <div style={{fontSize:'15px',color:'gold'}}> From</div>
        <div> {val.fromcity}</div>
         
         </div>
 			
-			<div className='mini' style={{marginTop:'80px',fontSize:'20px'}}>To {val.tocity}</div>
-      <div className='mini' style={{marginTop:'80px',fontSize:'20px'}}>Date {val.dateofjrny.substring(0,10)}</div>
-			<div className='mini' style={{marginTop:'80px',fontSize:'20px'}}>Cost ₹{val.price}</div>
+			<div className='mini' style={{marginTop:'80px',fontSize:'20px'}}>
+    
+        <div style={{fontSize:'15px',color:'gold'}}>   To </div>
+        <div> {val.tocity}</div>
+      
+      </div>
+      <div className='mini' style={{marginTop:'80px',fontSize:'20px'}}>
+        
+      <div style={{fontSize:'15px',color:'gold'}}>Date of Journey </div>
+        {val.dateofjrny.substring(0,10)}
+        </div>
+			<div className='mini' style={{marginTop:'80px',fontSize:'20px'}}>
+      <div style={{fontSize:'15px',color:'gold'}}>Cost </div>
+
+      ₹{val.price}
+      </div>
 			
 			<div className='mini' style={{marginTop:'50px',fontSize:'20px'}}>AC</div>
-			<div className='mini' style={{marginTop:'50px',fontSize:'20px'}}>{val.starttime}</div>
-			<div className='mini' style={{marginTop:'50px',fontSize:'20px'}}>{val.reachtime}</div>
-			<div className='mini' style={{marginTop:'50px',fontSize:'20px'}}>Bus ID: {val.busid}</div>
-      <div className='mini' style={{marginTop:'50px',fontSize:'20px'}}>{val.noofseats} Seats</div>
-      <div className='mini' style={{marginTop:'30px',fontSize:'20px'}}>{val.drivername}</div>
+			<div className='mini' style={{marginTop:'50px',fontSize:'20px'}}>
+      <div style={{fontSize:'15px',color:'gold'}}>Starts </div>
+        {val.starttime}</div>
+			<div className='mini' style={{marginTop:'50px',fontSize:'20px'}}>
+      <div style={{fontSize:'15px',color:'gold'}}>Reaches</div>
+        {val.reachtime}</div>
+			<div className='mini' style={{marginTop:'50px',fontSize:'20px'}}>
+      <div style={{fontSize:'15px',color:'gold'}}>Bus ID</div>
+      {val.busid}</div>
+      <div className='mini' style={{marginTop:'50px',fontSize:'20px'}}>
+        
+      <div style={{fontSize:'15px',color:'gold'}}>No of Seats </div>
+        {val.noofseats} </div>
       <div className='mini' style={{marginTop:'30px',fontSize:'20px'}}>
+      <div style={{fontSize:'15px',color:'gold'}}>Driver Name </div>
+        {val.drivername}</div>
+      <div className='mini' style={{marginTop:'30px',fontSize:'20px'}}>
+      <div style={{fontSize:'15px',color:'gold'}}>Driver Contact </div>
       {val.drivermobilenumber}
       {/* <img className='ticketicon' style={{width:'60px'}} src="https://cdn-icons.flaticon.com/png/512/3205/premium/3205244.png?token=exp=1651178403~hmac=4a9cf88537ef281a981ee8dcf5816967" alt="" /> */}
     </div>
     
-    <div className='mini' style={{marginTop:'30px',fontSize:'20px'}}>{val.name}</div>
-    <div className='mini' style={{marginTop:'30px',fontSize:'20px'}}>{val.mobilenumber}</div>
-    <div className='mini' style={{marginTop:'30px',fontSize:'20px'}}>{val.email}</div>
+    <div className='mini' style={{marginTop:'30px',fontSize:'20px'}}>
+    <div style={{fontSize:'15px',color:'gold'}}>Passenger Name </div>
+      {val.name}</div>
+    <div className='mini' style={{marginTop:'30px',fontSize:'20px'}}>
+    <div style={{fontSize:'15px',color:'gold'}}>Passenger Contact </div>
+      {val.mobilenumber}</div>
+    <div className='mini' style={{marginTop:'30px',fontSize:'20px'}}>
+    <div style={{fontSize:'15px',color:'gold'}}>Passenger email </div>
+      {val.email}</div>
     
       
 			
