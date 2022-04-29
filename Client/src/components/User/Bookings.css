@@ -1,7 +1,7 @@
 .angry-grid{
 	display: grid; 
 
-	grid-template-rows: 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 	
 	gap: 0px;
@@ -16,3 +16,13 @@
 	gap: 0px;
 	height: 100%;
   }
+  .ticketicon{
+
+  }
+  .mini {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(2, 1fr);
+	grid-column-gap: 0px;
+	grid-row-gap: 5px;
+	}

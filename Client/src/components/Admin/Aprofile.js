@@ -33,22 +33,22 @@ export default function Aprofile() {
 
 <div className="mainn" style={{border:'5px solid white',borderRadius:'15px',width:'750px',height:'400px',marginLeft:'400px',color:'white'}}>
     <div>
-        <img style={{width:'250px',height:'250px',marginTop:'70px',marginLeft:'20px'}} src="https://cswnn.edu.in/system/files/2021-02/avatar-png-1-original.png" alt="" />
+        <img style={{width:'250px',height:'250px',marginTop:'70px',marginLeft:'20px'}} src="https://cdn-icons.flaticon.com/png/512/6024/premium/6024190.png?token=exp=1651221725~hmac=4dc1588fab5a302f46e2ccaaf1f884dd" alt="" />
     </div>
     <div style={{marginLeft:'300px',marginTop:'-200px'}}>
     <table style={{width: "404px",fontSize:'20px'}}>
     <tbody>
     <tr className='text-center'>
-    <td style={{width: "404px",height:'50px',fontSize:'20px'}}>Name</td>
-    <td style={{width: "404px",height:'50px'}}>{admindetails.name}</td>
+    <td style={{width: "404px",height:'50px',fontSize:'20px',border:'none'}}>Name</td>
+    <td style={{width: "404px",height:'50px',border:'none'}}>{admindetails.name}</td>
     </tr>
     <tr className='text-center'>
-    <td style={{width: "354px",height:'50px'}}>Email</td>
-    <td style={{width: "354px",height:'50px'}}>{Cookies.get("admin")}</td>
+    <td style={{width: "354px",height:'50px',border:'none'}}>Email</td>
+    <td style={{width: "354px",height:'50px',border:'none'}}>{Cookies.get("admin")}</td>
     </tr>
     <tr className='text-center'>
-    <td style={{width: "354px",height:'50px'}}>MobileNumber</td>
-    <td style={{width: "354px",height:'50px'}}>{admindetails.mobilenumber}</td>
+    <td style={{width: "354px",height:'50px',border:'none'}}>MobileNumber</td>
+    <td style={{width: "354px",height:'50px',border:'none'}}>{admindetails.mobilenumber}</td>
     </tr>
     
     

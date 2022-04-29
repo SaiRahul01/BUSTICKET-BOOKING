@@ -44,7 +44,7 @@ export default function Login() {
 
       if (response.data.message) {
         
-        toast.warning("Unsuccessful")
+        toast.error("Wrong Credentials")
       } else {
 
        
@@ -85,7 +85,7 @@ export default function Login() {
             <h2>Admin Login</h2>
             <form>
               <div class="user-box">
-                <input type="text" onChange={e => setemaillogin(e.target.value)} name="" required="" />
+                <input type="email" onChange={e => setemaillogin(e.target.value)}  required="" />
                 <label>Admin Email</label>
               </div>
               <div class="user-box">

@@ -1,6 +1,6 @@
 import Axios from 'axios'
 import Cookies  from 'js-cookie'
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { ToastContainer,toast } from 'react-toastify'
 
 
@@ -22,6 +22,18 @@ export default function Addbus() {
 	const [seatprice, setseatprice] = useState('')
 	const [bussid, setbussid] = useState(0)
 	const [type, settype] = useState("AC")
+	const [maxi, setmaxi] = useState(0)
+
+	useEffect(() => {
+	  setTimeout(() => {
+		  Axios.get('http://localhost:3001/getmaxi').then((response)=>{
+			//   setmaxi(response.data[0])
+			  setmaxi(response.data[0].f);
+
+		  })
+	  }, 500);
+	}, )
+	
 
 	const handleaddbus = async(e) => {
 
@@ -71,6 +83,19 @@ export default function Addbus() {
 			e.preventDefault()
 			return
 		}
+		if(starttime===reachtime)
+		{
+			toast('Start Time and Reach time cannot be the Same')
+			e.preventDefault()
+			return
+		}
+
+		if(fromstation===tostation)
+		{
+			toast("Source and Destination cannot be the Same!");
+			e.preventDefault()
+			return;
+		}
 		
 
 
@@ -80,6 +105,7 @@ export default function Addbus() {
 
 
 		Axios.post('http://localhost:3001/addbus', {
+			busid:maxi+1,
 			busname: busname.toLowerCase(),
 			driver: driver.toLowerCase(),
 			fromstation: fromstation.toLowerCase(),
@@ -107,10 +133,12 @@ export default function Addbus() {
 			(response)=>{
 				console.log(response.data[0].busid);
 				setbussid(response.data[0].busid)
+				// toast("Here->"+bussid)
+				window.location.href="/admin/viewbuses"
 			}
 		)
 		
-	
+	   await delay(1000)
 		Axios.post('http://localhost:3001/bus_admin',{busid:bussid,adminemail:Cookies.get("admin")}).then((response)=>{
 			console.log(response);
 
@@ -162,7 +190,7 @@ export default function Addbus() {
 		<>
 
 		
-		
+		{/* <h1 style={{color:'white'}}>{maxi}</h1> */}
 			<div class="container-contact100">
 				<div class="wrap-contact100">
 					<form class="contact100-form validate-form">

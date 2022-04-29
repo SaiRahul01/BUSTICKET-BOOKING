@@ -57,7 +57,7 @@ export default function Login() {
 
       if (response.data.message) {
         
-        toast("Unsuccessful")
+        toast.error("Wrong Credentials")
       } else {
 
        

@@ -11,10 +11,22 @@ export default function Deletebus() {
 
     const handledelete=(e)=>{
       Axios.post('http://localhost:3001/deletebus',{id:parseInt(id)}).then((response)=>{
-        if(response)
+        console.log(response);
+        if(response.data.f)
         {
+          
+          window.location.href="/admin/viewbuses"
           toast('Deleted Successfully')
+        
+          return
         }
+       
+          toast('There are Bookings with this bus, cannot delete!')
+        
+        
+        
+          
+        
       })
       e.preventDefault()
         

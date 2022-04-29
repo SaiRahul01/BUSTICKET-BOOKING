@@ -110,6 +110,11 @@ export default function Navbar() {
           <Link className="nav-link active" to="/admin/viewusers" >View Users</Link >
         </li>
 
+        <li className="nav-item pe-3" style={{display:(Cookies.get("isauth")==="true" && Cookies.get("admin"))?'flex':'none',alignItems:'center'}}>
+        <img  style={{height:'28px',width:'28px'}} src="https://cdn-icons.flaticon.com/png/512/2684/premium/2684218.png?token=exp=1651221459~hmac=b366e9800096dc8259ba2edb0683cb98" alt=''/>
+          <Link className="nav-link active" to="/admin/viewdrivers" >View Drivers</Link >
+        </li>
+
 
         
         <li className="nav-item pe-3" style={{display:Cookies.get("isauth")==="true"?'flex':'none',alignItems:'center'}}>

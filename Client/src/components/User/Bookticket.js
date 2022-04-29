@@ -1,8 +1,9 @@
 import React from 'react'
 import './Bookticket.css'
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import {Link} from "react-router-dom"
 import Axios from 'axios';
+
 
 export default function Bookticket() {
   const [fromcity, setfromcity] = useState('')
@@ -10,6 +11,18 @@ export default function Bookticket() {
    const [tdate, settdate] = useState('')
    const [f, setf] = useState(true)
    const [availablebuses, setavailablebuses] = useState([])
+   const [busids, setbusids] = useState([])
+//    useEffect(() => {
+// 	   setTimeout(() => {
+// 		Axios.get('http://localhost:3001/user/getbusids').then((response)=>{
+// 			setbusids(response.data)
+ 
+// 		})
+		   
+// 	   }, 500);
+	 
+//    })
+   
 
    const handlecheckbuses=()=>{
 	if(fromcity==='' || tocity==='' || tdate==='')
@@ -19,6 +32,13 @@ export default function Bookticket() {
 	}
 
 	   console.log(fromcity+"\t\t"+tocity);
+
+	   
+		// Axios.post('http://localhost:3001/user/addifnot',{arr:busids,tdate:tdate}).then((response)=>{
+		// 	console.log(response);
+		// })
+
+
 	   Axios.post('http://localhost:3001/user/checkbuses',{
 		   fromcity:fromcity,
 		   tocity:tocity,
@@ -55,7 +75,7 @@ export default function Bookticket() {
 								<div class="col-md-6" >
 									<div class="form-group" >
 										<span class="form-label" style={{color:'black'}} >Date of Journey</span>
-										<input class="form-control" onChange={e=>settdate(e.target.value) } min={new Date().toISOString().split('T')[0]} type="date" required/>
+										<input class="form-control" onChange={e=>settdate(e.target.value) } min={new Date().toISOString().split('T')[0]} max={(new Date(Date.now()+3*24*60*60*1000)).toISOString().split('T')[0]} type="date" required/>
 									</div>
 								</div>
 								{/* <div class="col-md-6">

@@ -27,6 +27,7 @@ import Bookings from './components/User/Bookings';
 import Cookies from 'js-cookie';
 import Deletebus from './components/Admin/Deletebus';
 import Ticketconfirm from './components/User/Ticketconfirm';
+import Viewdrivers from './components/Admin/Viewdrivers';
 // import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -92,6 +93,9 @@ function App() {
 
           </Route>
           <Route exact path="/admin/viewbuses" element={<Viewbuses />}>
+
+          </Route>
+          <Route exact path="/admin/viewdrivers" element={<Viewdrivers />}>
 
           </Route>
 

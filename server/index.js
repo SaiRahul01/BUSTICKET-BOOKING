@@ -8,6 +8,7 @@ const path = require('path')
 const shortid = require('shortid')
 const Razorpay = require('razorpay')
 const { toast } = require('react-toastify')
+const stripe=require("stripe")("sk_test_51KtZSVSE0gT3DMfQuv9tIKcxlJ2S6eqx5NCWaMkaN9fRGLnxEK4uG0k08tlzplOwyGXkWxtAYwOFfWyo6oD3VvGU00cfeQoiLl")
 
 const app = exp()
 app.use(cors({
@@ -243,7 +244,7 @@ app.post('/getadmindetails',(req,res)=>{
 app.post("/getbookings",(req,res)=>{
     
     const useremail=req.body.useremail;
-    db.query("SELECT * FROM ticket,users,bus where bus.busid=ticket.bus_id and  users.id=ticket.user_id and  email=?",[useremail],(err,result)=>{
+    db.query("SELECT * FROM ticket,users,bus,driver where bus.busid=ticket.bus_id and bus.busdriver=driver.drivername and  users.id=ticket.user_id and  email=?",[useremail],(err,result)=>{
         if(err)
         {
             console.log(err);
@@ -275,7 +276,8 @@ app.post('/addbus', (req, res) => {
     const reachtime=req.body.reachtime
     const ticketprice=req.body.ticketprice
     const type=req.body.type
-    db.query("INSERT INTO bus(busname,capacity,fromcity,tocity,busdriver,starttime,reachtime,ticketprice,type) VALUES(?,?,?,?,?,?,?,?,?)", [busname, capacity, fromstation, tostation, driver,starttime,reachtime,ticketprice,type], (err, result) => {
+    const maxi=req.body.busid
+    db.query("INSERT INTO bus(busid,busname,capacity,fromcity,tocity,busdriver,starttime,reachtime,ticketprice,type) VALUES(?,?,?,?,?,?,?,?,?,?)", [maxi,busname, capacity, fromstation, tostation, driver,starttime,reachtime,ticketprice,type], (err, result) => {
         if (err) {
             console.log(err);
             res.send({ op: 'fail' })
@@ -294,12 +296,13 @@ app.delete("/admin/deletebus/:id", (req, res) => {
     const id = req.params.id
     db.query("DELETE FROM bus where busid=?", [id], (err, result) => {
         if (err) {
-            console.log(err);
-            res.send({ err: err })
+            // console.log(err);
+            res.send({f:'a'})
         }
         else {
             res.send(result)
         }
+        
     })
 })
 
@@ -310,6 +313,19 @@ app.get('/admin/showbuses', (req, res) => {
         }
         else {
             res.send(result);
+        }
+    })
+})
+
+app.get('/admin/showdrivers',(req,res)=>{
+    db.query("SELECT * from driver",(err,results)=>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            res.send(results)
         }
     })
 })
@@ -436,6 +452,53 @@ app.get('/logo.svg', (req, res) => {
 	res.sendFile(path.join(__dirname, 'logo.svg'))
 })
 
+app.post('/checkout',(req,res)=>{
+    console.log(req.body);
+    res.send({status:200})
+})
+// app.get('/user/getbusids',(req,res)=>{
+//     db.query("SELECT busid from bus where busid>0",(err,results)=>{
+//         if(err)
+//         {
+//             console.log("B"+err);
+//         }
+//         else
+//         {
+//             res.send(results)
+//         }
+//     })
+// })
+// app.post('/user/addifnot',(req,res)=>{
+//     const arr=req.body.arr;
+//     const tdate=req.body.tdate
+//     for(var x=0;x<arr.length;x++)
+//     {
+//         const idd=parseInt(arr[x]);
+//         db.query("INSERT INTO bus_status(tdate,seatsleft,bussid) values(?,?,?)",[tdate,40,idd],(err,results)=>{
+//             if(err)
+//             {
+//                 console.log("A:"+err);
+//             }
+
+//             else
+//             {
+//                 res.send(results)
+//             }
+//         })
+//     }
+// })
+app.get('/getmaxi',(req,res)=>{
+    db.query("SELECT MAX(busid) as f from bus",(err,results)=>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            res.send(results)
+        }
+    })
+})
 app.listen(3001, () => {
     console.log("Server is Running !");
 })
